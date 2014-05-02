@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/skytap/minorjs.svg?branch=master)](https://travis-ci.org/skytap/minorjs)
+
 Clustered web framework for Node.js that favors convention over configuration.
 
 # Installation
