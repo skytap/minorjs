@@ -1,0 +1,67 @@
+{
+  "name": "minorjs",
+  "version": "0.0.1",
+  "description": "Clustered web framework that favors convention over configuration.",
+  "author": {
+    "name": "Skytap",
+    "url": "http://www.skytap.com/"
+  },
+  "maintainers": [
+    {
+      "name": "Scott Brady",
+      "email": "scott@sbrady.com"
+    }
+  ],
+  "keywords": [
+    "minorjs",
+    "minor js",
+    "minor.js",
+    "web",
+    "framework",
+    "www",
+    "http",
+    "cluster"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/skytap/minorjs"
+  },
+  "main": "./index.js",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/skytap/minorjs/blob/master/LICENSE"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/skytap/minorjs/issues"
+  },
+  "homepage": "https://github.com/skytap/minorjs",
+  "dependencies": {
+    "express": "4.1.0",
+    "express-partials": "0.2.0",
+    "cookie-parser": "1.0.1",
+    "errorhandler": "1.0.0",
+    "compression": "1.0.1",
+    "static-favicon": "1.0.2",
+    "body-parser": "1.0.2",
+    "q": "1.0.0",
+    "underscore": "1.4.4",
+    "wrench": "1.5.8",
+    "winston": "0.7.3",
+    "haml-coffee": "1.14.1",
+    "haml-coffee-loader": "0.0.4",
+    "backhoe": "0.0.3",
+    "humanize-plus": "1.4.2"
+  },
+  "devDependencies": {
+    "should": "3.3.1",
+    "sinon": "1.9.1",
+    "mocha": "1.18.2"
+  },
+  "scripts": {
+    "test": "mocha -r test/nocache.js test/**/*"
+  }
+}
