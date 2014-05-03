@@ -29,7 +29,7 @@ While MinorJS is written in Javascript, the framework happily works with Coffee 
 
 # License
 
-MIT
+Apache v2
 
 ## Contributors
 
