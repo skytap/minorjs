@@ -31,7 +31,7 @@
     "node": ">=0.10"
   },
   "license": {
-    "type": "MIT",
+    "type": "Apache v2",
     "url": "https://github.com/skytap/minorjs/blob/master/LICENSE"
   },
   "readmeFilename": "README.md",
@@ -40,27 +40,27 @@
   },
   "homepage": "https://github.com/skytap/minorjs",
   "dependencies": {
-    "express": "4.1.0",
-    "express-partials": "0.2.0",
-    "cookie-parser": "1.0.1",
-    "errorhandler": "1.0.0",
-    "compression": "1.0.1",
-    "static-favicon": "1.0.2",
-    "body-parser": "1.0.2",
-    "q": "1.0.0",
-    "underscore": "1.4.4",
-    "wrench": "1.5.8",
-    "haml-coffee": "1.14.1",
-    "haml-coffee-loader": "0.0.4",
-    "backhoe": "0.0.3",
-    "humanize-plus": "1.4.2"
+    "express": "~4.1.0",
+    "express-partials": "~0.2.0",
+    "cookie-parser": "~1.0.1",
+    "errorhandler": "~1.0.0",
+    "compression": "~1.0.1",
+    "static-favicon": "~1.0.2",
+    "body-parser": "~1.0.2",
+    "q": "~1.0.0",
+    "underscore": "~1.4.4",
+    "wrench": "~1.5.8",
+    "haml-coffee": "~1.14.1",
+    "haml-coffee-loader": "~0.0.4",
+    "backhoe": "~0.0.3",
+    "humanize-plus": "~1.4.2"
   },
   "devDependencies": {
-    "should": "3.3.1",
-    "sinon": "1.9.1",
-    "mocha": "1.18.2"
+    "should": "~3.3.1",
+    "sinon": "~1.9.1",
+    "mocha": "~1.18.2"
   },
   "scripts": {
-    "test": "mocha -r test/nocache.js test/**/*"
+    "test": "mocha -r test/nocache.js test/lib/**/*"
   }
 }
