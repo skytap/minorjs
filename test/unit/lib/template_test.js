@@ -32,7 +32,7 @@ describe('lib/template.js', function () {
                 foo : 42
             };
 
-            Module = require('../../lib/template');
+            Module = require('../../../lib/template');
             Module.mixins = expected;
             Module.getMixins().should.eql(expected);
         });
@@ -45,7 +45,7 @@ describe('lib/template.js', function () {
                 },
                 templatesPath = path.join(
                     __dirname,
-                    '../../test/data/mixins'
+                    '../../../test/data/mixins'
                 ),
                 expected      = {
                     bar_mixin : {
@@ -56,9 +56,9 @@ describe('lib/template.js', function () {
                     }
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/template');
+            Module = require('../../../lib/template');
             Module.loadMixins(templatesPath)
                 .then(function () {
                     Module.mixins.should.eql(expected);

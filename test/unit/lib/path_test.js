@@ -19,7 +19,7 @@ var should  = require('should'),
     Backhoe = require('backhoe'),
     path    = require('path'),
     Q       = require('q'),
-    Module  = require('../../lib/path');
+    Module  = require('../../../lib/path');
 
 describe('lib/path.js', function () {
     beforeEach(function () {

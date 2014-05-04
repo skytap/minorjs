@@ -27,7 +27,7 @@ describe('lib/environment.js', function () {
     describe('getBasePath', function () {
         it('returns correct path', function () {
             var path = 'some path';
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.basePath = path;
             Module.getBasePath().should.eql(path);
         });
@@ -36,7 +36,7 @@ describe('lib/environment.js', function () {
     describe('getEnvironment', function () {
         it('returns correct environment', function () {
             var environment = 'some env';
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.environment = environment;
             Module.getEnvironment().should.eql(environment);
         });
@@ -45,7 +45,7 @@ describe('lib/environment.js', function () {
     describe('getInstance', function () {
         it('returns correct instance', function () {
             var instance = 42;
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.instance = instance;
             Module.getInstance().should.eql(instance);
         });
@@ -58,9 +58,9 @@ describe('lib/environment.js', function () {
                     load : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/config'), Config);
+            Backhoe.mock(require.resolve('../../../lib/config'), Config);
 
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
 
             Module._loadConfigs = sinon.spy(function () {
                 return configs;
@@ -89,13 +89,13 @@ describe('lib/environment.js', function () {
 
     describe('isDevelopment', function () {
         it('returns false', function () {
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.environment = 'production';
             Module.isDevelopment().should.be.false;
         });
 
         it('returns true', function () {
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.environment = 'development';
             Module.isDevelopment().should.be.true;
         });
@@ -103,13 +103,13 @@ describe('lib/environment.js', function () {
 
     describe('isProduction', function () {
         it('returns false', function () {
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.environment = 'development';
             Module.isProduction().should.be.false;
         });
 
         it('returns true', function () {
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.environment = 'production';
             Module.isProduction().should.be.true;
         });
@@ -117,7 +117,7 @@ describe('lib/environment.js', function () {
 
     describe('_getConfigFilePath', function () {
         it('returns correct path', function () {
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.basePath = 'foo/bar';
             Module._getConfigFilePath().should.eql('foo/bar/config/app.json');
         });
@@ -129,9 +129,9 @@ describe('lib/environment.js', function () {
                     initialize : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
 
             Module.environment = 'development';
             Module.basePath    = 'foo/bar';
@@ -152,7 +152,7 @@ describe('lib/environment.js', function () {
 
     describe('_loadConfigs', function () {
         it('returns parsed config file', function () {
-            Module = require('../../lib/environment');
+            Module = require('../../../lib/environment');
             Module.basePath = 'test/data';
             Module._loadConfigs().should.eql({
                 "foo" : "bar"

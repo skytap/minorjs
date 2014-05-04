@@ -35,7 +35,7 @@ describe('lib/logger.js', function () {
                     ]
                 };
 
-            Module = require('../../lib/logger');
+            Module = require('../../../lib/logger');
             Module.initialize(options);
             Module._options.should.eql(options);
             Module.loggers.length.should.eql(1);
@@ -51,7 +51,7 @@ describe('lib/logger.js', function () {
                     ]
                 };
 
-            Module = require('../../lib/logger');
+            Module = require('../../../lib/logger');
             Module.initialize(options);
             Module._options.should.eql(options);
             Module.loggers.length.should.eql(2);
@@ -65,7 +65,7 @@ describe('lib/logger.js', function () {
             var name  = 'some name',
                 start = 12345;
 
-            Module = require('../../lib/logger');
+            Module = require('../../../lib/logger');
             Module._log = sinon.spy(function (level, message) {
                 level.should.eql('debug');
                 message.should.match(/Performance: some name took [0-9]*ms/);
@@ -89,7 +89,7 @@ describe('lib/logger.js', function () {
                 level   = 'debug',
                 message = 'some log message';
 
-            Module = require('../../lib/logger');
+            Module = require('../../../lib/logger');
             Module.loggers = loggers;
             Module._log(message);
 

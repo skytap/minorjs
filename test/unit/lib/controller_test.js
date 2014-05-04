@@ -40,7 +40,7 @@ describe('lib/controller.js', function () {
                     next     = sinon.spy(),
                     module;
 
-                Module = require('../../lib/controller');
+                Module = require('../../../lib/controller');
                 module = new Module();
                 module[action](request, response, next);
 
@@ -55,7 +55,7 @@ describe('lib/controller.js', function () {
                 handler = 'somehandler',
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module.addFiltersForHandler(url, handler);
 
@@ -71,7 +71,7 @@ describe('lib/controller.js', function () {
                 handler = 'somehandler',
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module.before = {
                 'index' : [ 'nomatch' ]
@@ -91,7 +91,7 @@ describe('lib/controller.js', function () {
                 handler = 'somehandler',
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module.before = {
                 'index' : [ 'somehandler', 'otherfilter' ]
@@ -113,7 +113,7 @@ describe('lib/controller.js', function () {
                 handler = 'somehandler',
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module.before = {
                 'index' : [ 'all' ]
@@ -138,7 +138,7 @@ describe('lib/controller.js', function () {
                 filters = [ 'index' ],
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module.filtersByRoute[url] = {};
             module.filtersByRoute[url][handler] = filters;
@@ -156,7 +156,7 @@ describe('lib/controller.js', function () {
                 incidentId = 'ABC123',
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._getFullError(request, response, error, incidentId)
                 .should.eql('Incident ' + incidentId + ' - ' + error.stack);
@@ -171,7 +171,7 @@ describe('lib/controller.js', function () {
                 incidentId = 'ABC123',
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._getUserError(request, response, error, incidentId)
                 .should.eql('An error occurred. Please try again.' + ' (' + incidentId + ')');
@@ -180,14 +180,14 @@ describe('lib/controller.js', function () {
 
     describe('_getIncidentId', function () {
         it('returns string', function () {
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             var module = new Module();
             var result = module._getIncidentId();
             result.should.be.type('string');
         });
 
         it('returns string of correct length', function () {
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             var module = new Module();
             var result = module._getIncidentId();
             result.length.should.eql(8);
@@ -207,9 +207,9 @@ describe('lib/controller.js', function () {
                 },
                 module;
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._handleXhrError = sinon.spy();
             module._handleNormalError = sinon.spy();
@@ -238,9 +238,9 @@ describe('lib/controller.js', function () {
                 },
                 module;
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._handleXhrError = sinon.spy();
             module._handleNormalError = sinon.spy();
@@ -270,9 +270,9 @@ describe('lib/controller.js', function () {
                 },
                 module;
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._handleXhrError = sinon.spy();
             module._handleNormalError = sinon.spy();
@@ -303,7 +303,7 @@ describe('lib/controller.js', function () {
                 },
                 module;
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._handleXhrError(request, response, error);
 
@@ -337,9 +337,9 @@ describe('lib/controller.js', function () {
                 },
                 module;
 
-            Backhoe.mock(require.resolve('../../lib/environment'), Environment);
+            Backhoe.mock(require.resolve('../../../lib/environment'), Environment);
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._getUserError = sinon.spy(function () {
                 return userError;
@@ -378,9 +378,9 @@ describe('lib/controller.js', function () {
                 },
                 module;
 
-            Backhoe.mock(require.resolve('../../lib/environment'), Environment);
+            Backhoe.mock(require.resolve('../../../lib/environment'), Environment);
 
-            Module = require('../../lib/controller');
+            Module = require('../../../lib/controller');
             module = new Module();
             module._getUserError = sinon.spy(function () {
                 return userError;

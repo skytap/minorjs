@@ -35,7 +35,7 @@ describe('lib/router.js', function () {
                     'bar/baz_controller.js'
                 ];
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._loadAllControllers = sinon.spy();
             Module.load(app, controllers)
                 .then(function () {
@@ -55,7 +55,7 @@ describe('lib/router.js', function () {
                 route      = 'some route',
                 routes     = [ route ];
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._registerRoute = sinon.spy();
             Module._getRoutesForUrl = sinon.spy(function () {
                 return routes;
@@ -90,7 +90,7 @@ describe('lib/router.js', function () {
         ]
         .forEach(function (testCase) {
             it('should correctly determine if file is controller', function () {
-                Module = require('../../lib/router');
+                Module = require('../../../lib/router');
                 Module._filterControllers(testCase.file).should.eql(testCase.expected);
             });
         });
@@ -125,7 +125,7 @@ describe('lib/router.js', function () {
         ]
         .forEach(function (testCase) {
             it('returns correct URL', function () {
-                Module = require('../../lib/router');
+                Module = require('../../../lib/router');
                 Module._fixUrl(testCase.file).should.eql(testCase.expected);
             });
         });
@@ -172,7 +172,7 @@ describe('lib/router.js', function () {
                     }
                 ];
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._getRoutesForUrl(url).should.eql(routes);
         });
 
@@ -216,7 +216,7 @@ describe('lib/router.js', function () {
                     }
                 ];
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._getRoutesForUrl(url).should.eql(routes);
         });
     });
@@ -247,10 +247,10 @@ describe('lib/router.js', function () {
                     info : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/filter'), Filter);
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/filter'), Filter);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
 
             Module._handleError = sinon.spy();
             Module._runController = sinon.spy(function () {
@@ -299,10 +299,10 @@ describe('lib/router.js', function () {
                     info : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/filter'), Filter);
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/filter'), Filter);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
 
             Module._runController = sinon.spy();
 
@@ -332,7 +332,7 @@ describe('lib/router.js', function () {
                     handler : 'some handler'
                 };
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             var result = Module._handleDevelopmentRequest(controller, url, route);
             result.addFiltersForHandler.calledOnce.should.be.true;
             result.addFiltersForHandler.calledWith(url, route.handler);
@@ -342,17 +342,17 @@ describe('lib/router.js', function () {
 
     describe('_incrementRequestCount', function () {
         it('should increment count', function () {
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module.requestCount.should.eql(0);
             Module._incrementRequestCount();
             Module.requestCount.should.eql(1);
         });
 
         it('should fire event if over request limit', function (done) {
-            var Config = require('../../lib/config');
+            var Config = require('../../../lib/config');
             Config.set('max_requests', 1);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._shouldKillWorker = sinon.spy(function () {
                 return true;
             });
@@ -375,7 +375,7 @@ describe('lib/router.js', function () {
                     'foo'
                 ];
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._loadController = sinon.spy(function () {
                 return Q('fooresult');
             });
@@ -399,9 +399,9 @@ describe('lib/router.js', function () {
                     profile : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._buildRoutes = sinon.spy();
             Module._loadController(app, controllerPath, file);
             Module._buildRoutes.calledOnce.should.be.true;
@@ -437,10 +437,10 @@ describe('lib/router.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/environment'), Environment);
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/environment'), Environment);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._handleDevelopmentRequest = sinon.spy();
             Module._incrementRequestCount = sinon.spy();
             Module._handleRequest = sinon.spy();
@@ -485,10 +485,10 @@ describe('lib/router.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/environment'), Environment);
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/environment'), Environment);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._handleDevelopmentRequest = sinon.spy();
             Module._incrementRequestCount = sinon.spy();
             Module._handleRequest = sinon.spy();
@@ -527,10 +527,10 @@ describe('lib/router.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/environment'), Environment);
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/environment'), Environment);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._handleDevelopmentRequest = sinon.spy();
             Module._incrementRequestCount = sinon.spy();
             Module._handleRequest = sinon.spy();
@@ -563,7 +563,7 @@ describe('lib/router.js', function () {
                 },
                 startTime  = 12345;
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._requestFinished(controller, request, startTime);
 
             controller.emit.calledOnce.should.be.true;
@@ -585,7 +585,7 @@ describe('lib/router.js', function () {
                 response   = {},
                 next       = {};
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._requestFinished = sinon.spy();
             var result = Module._runController(controller, route, startTime, request, response, next);
 
@@ -619,7 +619,7 @@ describe('lib/router.js', function () {
                 response   = {},
                 next       = {};
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module._requestFinished = sinon.spy();
             var result = Module._runController(controller, route, startTime, request, response, next);
 
@@ -645,22 +645,22 @@ describe('lib/router.js', function () {
                 })
             };
 
-            Backhoe.mock(require.resolve('../../lib/environment'), Environment);
+            Backhoe.mock(require.resolve('../../../lib/environment'), Environment);
         });
 
         it('should return false if max requests not set', function () {
-            var Config = require('../../lib/config');
+            var Config = require('../../../lib/config');
             Config.configs = {};
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module.requestCount = 100;
             Module._shouldKillWorker().should.be.false;
         });
 
         it('should return false if max requests are set and under limit', function () {
-            var Config  = require('../../lib/config');
+            var Config  = require('../../../lib/config');
             Config.set('max_requests', 2);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module.requestCount = 1;
             Module._shouldKillWorker().should.be.false;
 
@@ -668,10 +668,10 @@ describe('lib/router.js', function () {
         });
 
         it('should return true if max requests are set and at limit', function () {
-            var Config  = require('../../lib/config');
+            var Config  = require('../../../lib/config');
             Config.set('max_requests', 2);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module.requestCount = 2;
             Module._shouldKillWorker().should.be.true;
 
@@ -679,10 +679,10 @@ describe('lib/router.js', function () {
         });
 
         it('should return true if max requests are set and over limit', function () {
-            var Config  = require('../../lib/config');
+            var Config  = require('../../../lib/config');
             Config.set('max_requests', 2);
 
-            Module = require('../../lib/router');
+            Module = require('../../../lib/router');
             Module.requestCount = 5;
             Module._shouldKillWorker().should.be.true;
 

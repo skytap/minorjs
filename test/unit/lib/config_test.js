@@ -15,7 +15,7 @@
  **/
 
 var should = require('should'),
-    Module = require('../../lib/config');
+    Module = require('../../../lib/config');
 
 describe('lib/config.js', function () {
     beforeEach(function () {

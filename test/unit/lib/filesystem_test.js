@@ -37,7 +37,7 @@ describe('lib/filesystem.js', function () {
                     'bar/baz_controller.js'
                 ];
 
-            Module = require('../../lib/filesystem');
+            Module = require('../../../lib/filesystem');
             Module.recurseDirectory(controllers, filter)
                 .then(function (results) {
                     results.should.eql(expected);
@@ -54,12 +54,12 @@ describe('lib/filesystem.js', function () {
                 },
                 controllers = path.join(
                     __dirname,
-                    '../../test/data/controllers/bar'
+                    '../../../test/data/controllers/bar'
                 );
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filesystem');
+            Module = require('../../../lib/filesystem');
             Module.requireFilesInDirectory(controllers)
                 .then(function (results) {
                     results.another_controller.prototype.name.should.eql('another_controller');
@@ -83,7 +83,7 @@ describe('lib/filesystem.js', function () {
                     'bar/baz_controller.js'
                 ];
 
-            Module = require('../../lib/filesystem');
+            Module = require('../../../lib/filesystem');
             Module.recurseDirectorySync(controllers, filter).should.eql(expected);
         });
     });

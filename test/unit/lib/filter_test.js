@@ -34,7 +34,7 @@ describe('lib/filter.js', function () {
                     'bar'
                 ];
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.filters = expected;
             Module.getFilters(filtersPath).should.eql(expected);
         });
@@ -47,7 +47,7 @@ describe('lib/filter.js', function () {
                 },
                 filtersPath = path.join(
                     __dirname,
-                    '../../test/data/filters'
+                    '../../../test/data/filters'
                 ),
                 expected    = {
                     bar_filter : {
@@ -58,9 +58,9 @@ describe('lib/filter.js', function () {
                     }
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.load(filtersPath)
                 .then(function () {
                     Module.filters.bar_filter.name.should.eql(expected.bar_filter.name);
@@ -85,9 +85,9 @@ describe('lib/filter.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.run(filters, request, response, next)
                 .then(function () {
                     done();
@@ -107,9 +107,9 @@ describe('lib/filter.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.filters = {
                 'bar_filter' : {
                     process : sinon.spy(function () {
@@ -145,9 +145,9 @@ describe('lib/filter.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.filters = {
                 'bar_filter' : {
                     process : sinon.spy()
@@ -181,9 +181,9 @@ describe('lib/filter.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.filters = {
                 'bar_filter' : {
                     process : sinon.spy(function () {
@@ -221,9 +221,9 @@ describe('lib/filter.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.filters = {
                 'foo_filter' : {
                     process : sinon.spy(function () {
@@ -259,9 +259,9 @@ describe('lib/filter.js', function () {
                     debug : sinon.spy()
                 };
 
-            Backhoe.mock(require.resolve('../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
 
-            Module = require('../../lib/filter');
+            Module = require('../../../lib/filter');
             Module.filters = {
                 'foo_filter' : {
                     process : sinon.spy(function () {
