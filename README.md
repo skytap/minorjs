@@ -23,6 +23,15 @@ npm install minorjs
 * Express-style request middleware.
 * Template mixins: execute Javascript from your templates.
 
+# Functional testing
+
+You can easily write functional tests of your MinorJS application using the
+[MinorJS testing framework](https://github.com/skytap/minorjs-test).
+
+You can make requests to your site with a headless browser, access data
+in the DOM with jQuery-style selectors and build your tests with standard
+tools like Mocha and Should.
+
 # CoffeeScript-friendly
 
 While MinorJS is written in Javascript, the framework happily works with CoffeeScript.

@@ -20,8 +20,13 @@ var HttpServer = require('./lib/http_server'),
     server     = new HttpServer();
 
 server
+  // pass in the base directory so we can easily load files
   .initialize(__dirname)
   .then(function () {
+    // the initializiation of the server is async so we can load files like
+    // loggers, controllers, filters, middleware, etc.
+
+    // tell the server to start listening on the configured port
     return server.listen();
   })
   .done();

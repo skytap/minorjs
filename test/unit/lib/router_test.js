@@ -353,13 +353,13 @@ describe('lib/router.js', function () {
             Config.set('max_requests', 1);
 
             Module = require('../../../lib/router');
-            Module._shouldKillWorker = sinon.spy(function () {
+            Module._shouldStopWorker = sinon.spy(function () {
                 return true;
             });
 
             process.on('message', function (message) {
                 message.should.eql('shutdown');
-                Module._shouldKillWorker.calledOnce.should.be.true;
+                Module._shouldStopWorker.calledOnce.should.be.true;
                 done();
             });
 
@@ -635,7 +635,7 @@ describe('lib/router.js', function () {
         });
     });
 
-    describe('_shouldKillWorker', function () {
+    describe('_shouldStopWorker', function () {
         var Environment;
 
         beforeEach(function () {
@@ -653,7 +653,7 @@ describe('lib/router.js', function () {
             Config.configs = {};
             Module = require('../../../lib/router');
             Module.requestCount = 100;
-            Module._shouldKillWorker().should.be.false;
+            Module._shouldStopWorker().should.be.false;
         });
 
         it('should return false if max requests are set and under limit', function () {
@@ -662,7 +662,7 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
             Module.requestCount = 1;
-            Module._shouldKillWorker().should.be.false;
+            Module._shouldStopWorker().should.be.false;
 
             Environment.isWorker.calledOnce.should.be.true;
         });
@@ -673,7 +673,7 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
             Module.requestCount = 2;
-            Module._shouldKillWorker().should.be.true;
+            Module._shouldStopWorker().should.be.true;
 
             Environment.isWorker.calledOnce.should.be.true;
         });
@@ -684,7 +684,7 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
             Module.requestCount = 5;
-            Module._shouldKillWorker().should.be.true;
+            Module._shouldStopWorker().should.be.true;
 
             Environment.isWorker.calledOnce.should.be.true;
         });

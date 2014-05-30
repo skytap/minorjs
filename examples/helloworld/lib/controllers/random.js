@@ -21,6 +21,7 @@ function RandomController () {}
 
 util.inherits(RandomController, Controller);
 
+// run a filter before all requests
 RandomController.prototype.before = {
   'random' : [ 'all' ]
 };
@@ -30,6 +31,7 @@ RandomController.prototype.index = function (request, response, next) {
     request,
     response,
     'random/index',
+    // pass data to the template
     {
       color : request.color
     }

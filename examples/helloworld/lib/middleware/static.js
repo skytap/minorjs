@@ -20,6 +20,7 @@ var Minor       = require('minorjs'),
 
 module.exports = StaticMiddleware = {
   process : function (app) {
+    // tells Express to use the built-in static asset middleware
     app.use(Express.static(Environment.getBasePath() + '/public'));
   }
 };

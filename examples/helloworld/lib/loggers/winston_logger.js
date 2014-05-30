@@ -23,6 +23,7 @@ function WinstonLogger () {
 
   if (!Environment.isProduction()) {
     this.winston.add(
+      // configure console logging
       Winston.transports.Console,
       {
         colorize : true,
@@ -31,9 +32,11 @@ function WinstonLogger () {
     );
   }
 
+  // don't exit on error. MinorJS handles error conditions gracefully.
   this.winston.exitOnError = false;
 }
 
+// all loggers must implement a log method
 WinstonLogger.prototype.log = function (level, message) {
   this.winston.log(level, message)
 };

@@ -24,13 +24,20 @@ function HttpServer () {}
 HttpServer.prototype.initialize = function (basePath, port) {
   this.app = new Minor({
     basePath   : basePath,
-    port       : port || 3042,
+    port       : port || 3042, // you could easily load the port from a config file
+                               // or from a command line argument
     middleware : {
+      // you can define middleware for different environments. for example,
+      // you could run JS/CSS combination tasks in development but serve
+      // static assets in production.
       development : [
         'static'
       ]
     },
     loggers    : {
+      // you can define loggers for different environments. for example,
+      // you could log to a file in development and to a central syslog server
+      // in production.
       development : [
         'winston'
       ]
@@ -41,6 +48,7 @@ HttpServer.prototype.initialize = function (basePath, port) {
 };
 
 HttpServer.prototype.listen = function () {
+  // tell the server to start listening on the configured port
   return this.app.listen();
 };
 
