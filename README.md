@@ -2,7 +2,7 @@
 
 # MinorJS
 
-An unopinionated, ultra-minimal web framework that alleviates the pain of routing, testing, and deployment clustering for Node.js applications.
+MinorJS is an unopinionated, ultra-minimal web framework that alleviates the pain of routing, testing, and deployment clustering for Node.js applications.
 
 ## Why MinorJS?
 
