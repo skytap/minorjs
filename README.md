@@ -61,5 +61,5 @@ limitations under the License.
 
 ## Contributors
 
-[Scott Brady](https://github.com/scottbrady) (Maintainer)
-[Matt Mehlhope](https://github.com/mmehlhope)
+* [Scott Brady](https://github.com/scottbrady) (Maintainer)
+* [Matt Mehlhope](https://github.com/mmehlhope)
