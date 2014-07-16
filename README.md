@@ -1,8 +1,15 @@
 [![Build Status](https://travis-ci.org/skytap/minorjs.svg?branch=master)](https://travis-ci.org/skytap/minorjs)
 
-Clustered web framework for Node.js that favors convention over configuration.
+# MinorJS
 
-# Installation
+An unopinionated, ultra-minimal web framework that alleviates the pain of routing, testing, and deployment clustering for Node.js applications.
+
+## Why MinorJS?
+
+By starting with MinorJS you maintain the freedom to develop your application with whichever technologies and philosophies you find appropriate for your Node.js project. MinorJS only handles routing, testing, and deployment clustering, ensuring that you have the tools to develop with speed and ship with confidence.
+
+
+## Installation
 
 This package is available on npm as:
 
@@ -10,7 +17,7 @@ This package is available on npm as:
 npm install minorjs
 ```
 
-# Features
+## Features
 
 * Clustered to support fault tolerance and load balancing.
 * Zero-downtime rolling restarts.
@@ -23,7 +30,7 @@ npm install minorjs
 * Express-style request middleware.
 * Template mixins: execute Javascript from your templates.
 
-# Functional testing
+## Functional testing
 
 You can easily write functional tests of your MinorJS application using the
 [MinorJS testing framework](https://github.com/skytap/minorjs-test).
@@ -32,11 +39,11 @@ You can make requests to your site with a headless browser, access data
 in the DOM with jQuery-style selectors and build your tests with standard
 tools like Mocha and Should.
 
-# CoffeeScript-friendly
+## CoffeeScript-friendly
 
 While MinorJS is written in Javascript, the framework happily works with CoffeeScript.
 
-# License
+## License
 
 Copyright 2014 Skytap Inc.
 
@@ -55,3 +62,4 @@ limitations under the License.
 ## Contributors
 
 [Scott Brady](https://github.com/scottbrady) (Maintainer)
+[Matt Mehlhope](https://github.com/mmehlhope)
