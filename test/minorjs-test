@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * Copyright 2014 Skytap Inc.
  *
@@ -14,12 +16,8 @@
  * limitations under the License.
  **/
 
-var extend     = require('extend'),
-    MinorTest  = require('minorjs-test'),
-    FunctionalTest;
+var path = require('path');
 
-FunctionalTest = {
-    PORT: 4002
-};
-
-module.exports = extend({}, MinorTest, FunctionalTest);
+require('minorjs-test/lib/functional').start({
+  server : path.join(__dirname, 'lib/example_server')
+});

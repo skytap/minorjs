@@ -14,12 +14,19 @@
  * limitations under the License.
  **/
 
-var extend     = require('extend'),
-    MinorTest  = require('minorjs-test'),
-    FunctionalTest;
+var path       = require('path'),
+    extend     = require('extend'),
+    Server     = require('minorjs-test/lib/server'),
+    HttpServer = require('../../examples/helloworld/lib/http_server');
 
-FunctionalTest = {
-    PORT: 4002
-};
+function ExampleServer () {}
 
-module.exports = extend({}, MinorTest, FunctionalTest);
+extend(ExampleServer.prototype, Server.prototype, {
+
+  Server: HttpServer,
+
+  basePath: path.resolve(process.cwd(), 'examples/helloworld')
+
+});
+
+module.exports = ExampleServer;

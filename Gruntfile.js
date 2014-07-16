@@ -16,6 +16,12 @@
 
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-shell');
+
+  grunt.registerTask('tests', [
+    'mochaTest:unit',
+    'shell:functional'
+  ]);
 
   grunt.initConfig({
     mochaTest : {
@@ -30,14 +36,19 @@ module.exports = function (grunt) {
         src : [
           'test/unit/**/*.js'
         ]
-      },
+      }
+    },
+
+    shell : {
       functional : {
+        command : './test/minorjs-test',
         options : {
-          timeout : 10000
-        },
-        src : [
-          'test/functional/**/*.js'
-        ]
+          execOptions : {
+            env : {
+              MOCHA_COLORS : true
+            }
+          }
+        }
       }
     }
   });

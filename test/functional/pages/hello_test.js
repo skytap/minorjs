@@ -14,7 +14,8 @@
  * limitations under the License.
  **/
 
-var FunctionalTest = require('../../lib/functional_test');
+var should         = require('should'),
+    FunctionalTest = require('../../lib/functional_test');
 
 describe('/hello', function () {
   FunctionalTest.setup().run();

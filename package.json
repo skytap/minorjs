@@ -64,10 +64,11 @@
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
     "grunt-mocha-test": "~0.11.0",
+    "grunt-shell": "~0.7.0",
     "extend": "~1.3.0",
     "minorjs-test": "~0.1.0"
   },
   "scripts": {
-    "test": "grunt mochaTest:unit && grunt mochaTest:functional"
+    "test": "grunt tests"
   }
 }
