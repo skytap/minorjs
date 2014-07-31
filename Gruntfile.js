@@ -14,6 +14,8 @@
  * limitations under the License.
  **/
 
+var extend = require('extend');
+
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-shell');
@@ -44,9 +46,7 @@ module.exports = function (grunt) {
         command : './test/minorjs-test',
         options : {
           execOptions : {
-            env : {
-              MOCHA_COLORS : true
-            }
+            env : extend({ MOCHA_COLORS : true }, process.env)
           }
         }
       }
