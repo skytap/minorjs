@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 0.3.0, July 31st, 2014
+
+* Updated module dependencies.
+* Changed how we call bodyParser to support the new API.
+
 ## Version 0.2.0, July 16th, 2014
 
 * Added better logging when there's a problem loading a controller (rdevaissiere).
