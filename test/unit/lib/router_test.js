@@ -131,6 +131,29 @@ describe('lib/router.js', function () {
         });
     });
 
+    describe('_getControllerName', function () {
+        [
+            {
+                parts    : [],
+                expected : ''
+            },
+            {
+                parts    : [ 'foo' ],
+                expected : 'Foo'
+            },
+            {
+                parts    : [ 'foo', 'bar' ],
+                expected : 'FooBar'
+            }
+        ]
+        .forEach(function (testCase) {
+            it('should return ' + JSON.stringify(testCase.expected) + ' when the URL parts are ' + JSON.stringify(testCase.parts), function () {
+                Module = require('../../../lib/router');
+                Module._getControllerName(testCase.parts).should.eql(testCase.expected);
+            });
+        });
+    });
+
     describe('_getRoutesForUrl', function () {
         it('should return correct routes for root route', function () {
             var url    = '/',
@@ -406,6 +429,53 @@ describe('lib/router.js', function () {
             Module._loadController(app, controllerPath, file);
             Module._buildRoutes.calledOnce.should.be.true;
             Logger.profile.calledOnce.should.be.true;
+        });
+    });
+
+    describe('_parseControllerName', function () {
+        [
+            {
+                url      : '',
+                expected : []
+            },
+            {
+                url      : 'foobar',
+                expected : [ 'foobar' ]
+            },
+            {
+                url      : 'foobar/1',
+                expected : [ 'foobar' ]
+            },
+            {
+                url      : 'foobar/1/edit',
+                expected : [ 'foobar' ]
+            },
+            {
+                url      : 'foobar/1/new',
+                expected : [ 'foobar' ]
+            },
+            {
+                url      : 'foo/bar',
+                expected : [ 'foo', 'bar' ]
+            },
+            {
+                url      : 'foo/bar/1',
+                expected : [ 'foo', 'bar' ]
+            },
+            {
+                url      : 'foo/bar/1/edit',
+                expected : [ 'foo', 'bar' ]
+            },
+            {
+                url      : 'foo/bar/1/new',
+                expected : [ 'foo', 'bar' ]
+            }
+        ]
+        .forEach(function (testCase) {
+            it('should return ' + JSON.stringify(testCase.expected) + ' when the URL is ' + JSON.stringify(testCase.url), function () {
+                Module = require('../../../lib/router');
+                Module._parseControllerName(testCase.url).should.eql(testCase.expected);
+            });
         });
     });
 
