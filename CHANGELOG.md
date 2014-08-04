@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.4.0, August 4th, 2014
+
+* Fixed parsing of the current page to avoid including IDs and actions like new and edit.
+
 ## Version 0.3.0, July 31st, 2014
 
 * Updated module dependencies.
