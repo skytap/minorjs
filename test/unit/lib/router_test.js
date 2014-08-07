@@ -203,39 +203,74 @@ describe('lib/router.js', function () {
             var url    = '/foo/bar',
                 routes = [
                     {
-                        method  : 'get',
-                        url     : '/foo/bar',
-                        handler : 'index'
+                        method: 'get',
+                        url: '/foo/bar',
+                        handler: 'index'
                     },
                     {
-                        method  : 'get',
-                        url     : '/foo/bar/new',
-                        handler : 'new'
+                        method: 'get',
+                        url: '/foo/bar/new',
+                        handler: 'new'
                     },
                     {
-                        method  : 'post',
-                        url     : '/foo/bar',
-                        handler : 'create'
+                        method: 'post',
+                        url: '/foo/bar',
+                        handler: 'create'
                     },
                     {
-                        method  : 'get',
-                        url     : '/foo/bar/:id',
-                        handler : 'show'
+                        method: 'get',
+                        url: '/foo/bar/:barId',
+                        handler: 'show'
                     },
                     {
-                        method  : 'get',
-                        url     : '/foo/bar/:id/edit',
-                        handler : 'edit'
+                        method: 'get',
+                        url: '/foo/bar/:barId/edit',
+                        handler: 'edit'
                     },
                     {
-                        method  : 'put',
-                        url     : '/foo/bar/:id',
-                        handler : 'update'
+                        method: 'put',
+                        url: '/foo/bar/:barId',
+                        handler: 'update'
                     },
                     {
-                        method  : 'delete',
-                        url     : '/foo/bar/:id',
-                        handler : 'destroy'
+                        method: 'delete',
+                        url: '/foo/bar/:barId',
+                        handler: 'destroy'
+                    },
+                    {
+                        method: 'get',
+                        url: '/foo/:fooId/bar',
+                        handler: 'index'
+                    },
+                    {
+                        method: 'get',
+                        url: '/foo/:fooId/bar/new',
+                        handler: 'new'
+                    },
+                    {
+                        method: 'post',
+                        url: '/foo/:fooId/bar',
+                        handler: 'create'
+                    },
+                    {
+                        method: 'get',
+                        url: '/foo/:fooId/bar/:barId',
+                        handler: 'show'
+                    },
+                    {
+                        method: 'get',
+                        url: '/foo/:fooId/bar/:barId/edit',
+                        handler: 'edit'
+                    },
+                    {
+                        method: 'put',
+                        url: '/foo/:fooId/bar/:barId',
+                        handler: 'update'
+                    },
+                    {
+                        method: 'delete',
+                        url: '/foo/:fooId/bar/:barId',
+                        handler: 'destroy'
                     }
                 ];
 
