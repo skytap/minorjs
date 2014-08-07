@@ -1,5 +1,11 @@
 # MinorJS Changelog
 
+## Version 0.5.0, August 7th, 2014
+
+* Changed the router to generate routes for nested resources.
+* Added the ability to define a default error controller to handle 404s.
+* Show errors encountered while loading Controllers.
+
 ## Version 0.4.0, August 4th, 2014
 
 * Fixed parsing of the current page to avoid including IDs and actions like new and edit.
