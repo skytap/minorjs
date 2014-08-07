@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 0.5.1, August 7th, 2014
+
+* Use the standard mechanism for registering a controller for the error controller.
+  Fixes a bug accessing request.minorjs.*.
+
 ## Version 0.5.0, August 7th, 2014
 
 * Changed the router to generate routes for nested resources.
