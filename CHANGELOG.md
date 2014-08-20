@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.5.2, August 19th, 2014
+
+* Treat MD5 strings as resource IDs.
+
 ## Version 0.5.1, August 7th, 2014
 
 * Use the standard mechanism for registering a controller for the error controller.
