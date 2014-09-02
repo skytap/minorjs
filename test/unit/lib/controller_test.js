@@ -296,7 +296,10 @@ describe('lib/controller.js', function () {
         it('should render error for development', function () {
             var request    = {},
                 response   = {
-                    send : sinon.spy()
+                    status : sinon.spy(function () {
+                        return this;
+                    }),
+                    send   : sinon.spy()
                 },
                 error      = {
                     stack : 'some stack trace'
@@ -307,9 +310,11 @@ describe('lib/controller.js', function () {
             module = new Module();
             module._handleXhrError(request, response, error);
 
+            response.status.calledOnce.should.be.true;
+            response.status.calledWith(500);
+
             response.send.calledOnce.should.be.true;
             response.send.calledWith(
-                500,
                 {
                     success : false,
                     error   : error
