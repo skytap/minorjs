@@ -1,5 +1,11 @@
 # MinorJS Changelog
 
+## Version 0.5.3, September 2nd, 2014
+
+* Stop using the deprecated method of sending the HTTP status.
+* Gracefully handle errors generated from template files.
+* Turn on long stack traces of promises when in development mode.
+
 ## Version 0.5.2, August 19th, 2014
 
 * Treat MD5 strings as resource IDs.
