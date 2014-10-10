@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.5.4, October 10th, 2014
+
+* Updated module dependencies.
+
 ## Version 0.5.3, September 2nd, 2014
 
 * Stop using the deprecated method of sending the HTTP status.
