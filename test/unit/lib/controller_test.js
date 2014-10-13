@@ -178,22 +178,6 @@ describe('lib/controller.js', function () {
         });
     });
 
-    describe('_getIncidentId', function () {
-        it('returns string', function () {
-            Module = require('../../../lib/controller');
-            var module = new Module();
-            var result = module._getIncidentId();
-            result.should.be.type('string');
-        });
-
-        it('returns string of correct length', function () {
-            Module = require('../../../lib/controller');
-            var module = new Module();
-            var result = module._getIncidentId();
-            result.length.should.eql(8);
-        });
-    });
-
     describe('_handleError', function () {
         it('should get error information', function () {
             var incidentId  = 'ABC123',
@@ -205,21 +189,24 @@ describe('lib/controller.js', function () {
                 Logger      = {
                     error : sinon.spy()
                 },
+                Identifier  = {
+                    generate : sinon.spy(function () {
+                        return incidentId;
+                    })
+                },
                 module;
 
             Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/identifier'), Identifier);
 
             Module = require('../../../lib/controller');
             module = new Module();
             module._handleXhrError = sinon.spy();
             module._handleNormalError = sinon.spy();
-            module._getIncidentId = sinon.spy(function () {
-                return incidentId;
-            });
             module._getFullError = sinon.spy();
             module._handleError(request, response, error);
 
-            module._getIncidentId.calledOnce.should.be.true;
+            Identifier.generate.calledOnce.should.be.true;
             module._getFullError.calledOnce.should.be.true;
             module._getFullError.calledWith(request, response, error, incidentId);
 
@@ -236,17 +223,20 @@ describe('lib/controller.js', function () {
                 Logger  = {
                     error : sinon.spy()
                 },
+                Identifier  = {
+                    generate : sinon.spy(function () {
+                        return incidentId;
+                    })
+                },
                 module;
 
             Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/identifier'), Identifier);
 
             Module = require('../../../lib/controller');
             module = new Module();
             module._handleXhrError = sinon.spy();
             module._handleNormalError = sinon.spy();
-            module._getIncidentId = sinon.spy(function () {
-                return incidentId;
-            });
             module._getFullError = sinon.spy();
             module._handleError(request, response, error);
 
@@ -268,17 +258,20 @@ describe('lib/controller.js', function () {
                 Logger  = {
                     error : sinon.spy()
                 },
+                Identifier  = {
+                    generate : sinon.spy(function () {
+                        return incidentId;
+                    })
+                },
                 module;
 
             Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
+            Backhoe.mock(require.resolve('../../../lib/identifier'), Identifier);
 
             Module = require('../../../lib/controller');
             module = new Module();
             module._handleXhrError = sinon.spy();
             module._handleNormalError = sinon.spy();
-            module._getIncidentId = sinon.spy(function () {
-                return incidentId;
-            });
             module._getFullError = sinon.spy(function () {
                 return fullError;
             });

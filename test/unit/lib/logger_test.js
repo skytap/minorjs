@@ -66,7 +66,7 @@ describe('lib/logger.js', function () {
                 start = 12345;
 
             Module = require('../../../lib/logger');
-            Module._log = sinon.spy(function (level, message) {
+            Module._log = sinon.spy(function (level, request, message) {
                 level.should.eql('debug');
                 message.should.match(/Performance: some name took [0-9]*ms/);
             });
