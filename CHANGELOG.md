@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 0.6.0, October 13th, 2014
+
+* Now attaching a unique identifier token on every request. Useful for filtering
+  logs from a single request.
+
 ## Version 0.5.4, October 10th, 2014
 
 * Updated module dependencies.
