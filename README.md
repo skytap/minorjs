@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/skytap/minorjs.svg?branch=master)](https://travis-ci.org/skytap/minorjs)
+[![NPM version](https://badge.fury.io/js/minorjs.svg)](http://badge.fury.io/js/minorjs)
 
 # MinorJS
 
