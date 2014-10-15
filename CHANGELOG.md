@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.6.1, October 15th, 2014
+
+* Include a stack trace in the error message when loading a controller fails.
+
 ## Version 0.6.0, October 13th, 2014
 
 * Now attaching a unique identifier token on every request. Useful for filtering
