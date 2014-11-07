@@ -303,7 +303,8 @@ describe('lib/router.js', function () {
                 },
                 Logger         = {
                     info : sinon.spy()
-                };
+                },
+                startTime = Date.now();
 
             Backhoe.mock(require.resolve('../../../lib/filter'), Filter);
             Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
@@ -325,7 +326,7 @@ describe('lib/router.js', function () {
                 done();
             });
 
-            Module._handleRequest(url, route, controller, request, response, next);
+            Module._handleRequest(url, route, startTime, controller, request, response, next);
         });
 
         it('should handle error', function (done) {
@@ -355,7 +356,8 @@ describe('lib/router.js', function () {
                 },
                 Logger         = {
                     info : sinon.spy()
-                };
+                },
+                startTime = Date.now();
 
             Backhoe.mock(require.resolve('../../../lib/filter'), Filter);
             Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
@@ -376,7 +378,7 @@ describe('lib/router.js', function () {
                 done();
             });
 
-            Module._handleRequest(url, route, controller, request, response, next);
+            Module._handleRequest(url, route, startTime, controller, request, response, next);
         });
     });
 
@@ -530,7 +532,8 @@ describe('lib/router.js', function () {
                     handler : 'some handler'
                 },
                 controller     = {
-                    addFiltersForHandler : sinon.spy()
+                    addFiltersForHandler : sinon.spy(),
+                    emit                 : sinon.spy()
                 },
                 url            = 'another url',
                 Environment    = {
@@ -553,11 +556,13 @@ describe('lib/router.js', function () {
 
             controller.addFiltersForHandler.calledOnce.should.be.true;
             controller.addFiltersForHandler.calledWith(url, route.handler);
+            controller.emit.calledOnce.should.be.true;
+            controller.emit.calledWith('request-started', request);
 
             Module._incrementRequestCount.calledOnce.should.be.true;
 
             Module._handleRequest.calledOnce.should.be.true;
-            Module._handleRequest.calledWith(url, route, controller, request, response, next);
+            Module._handleRequest.calledWith(url, route, sinon.match.number, controller, request, response, next);
 
             Logger.debug.calledOnce.should.be.true;
             Environment.isDevelopment.calledOnce.should.be.true;
@@ -578,7 +583,8 @@ describe('lib/router.js', function () {
                     handler : 'some handler'
                 },
                 controller     = {
-                    addFiltersForHandler : sinon.spy()
+                    addFiltersForHandler : sinon.spy(),
+                    emit                 : sinon.spy()
                 },
                 url            = 'another url',
                 Environment    = {
@@ -620,7 +626,8 @@ describe('lib/router.js', function () {
                     handler : 'some handler'
                 },
                 controller     = {
-                    addFiltersForHandler : sinon.spy()
+                    addFiltersForHandler : sinon.spy(),
+                    emit                 : sinon.spy()
                 },
                 url            = 'another url',
                 Environment    = {
@@ -647,70 +654,8 @@ describe('lib/router.js', function () {
         });
     });
 
-    describe('_requestFinished', function () {
-        it('should load controller', function (done) {
-            var request    = {
-                    minorjs : {
-                        page   : 'some/page',
-                        action : 'index'
-                    },
-                    method  : 'get'
-                },
-                controller = {
-                    emit : sinon.spy(function (name, data) {
-                        name.should.eql('request-finished')
-                        data.page.should.eql(request.minorjs.page);
-                        data.action.should.eql(request.minorjs.action);
-                        data.method.should.eql(request.method);
-                        data.time.should.be.type('number');
-                        done();
-                    })
-                },
-                startTime  = 12345;
-
-            Module = require('../../../lib/router');
-            Module._requestFinished(controller, request, startTime);
-
-            controller.emit.calledOnce.should.be.true;
-        });
-    });
-
     describe('_runController', function () {
-        it('should run controller and return promise', function (done) {
-            var controller = {
-                    index : sinon.spy(function () {
-                        return Q('fooresult');
-                    })
-                },
-                route      = {
-                    handler : 'index'
-                },
-                startTime  = 12345,
-                request    = {},
-                response   = {},
-                next       = {};
-
-            Module = require('../../../lib/router');
-            Module._requestFinished = sinon.spy();
-            var result = Module._runController(controller, route, startTime, request, response, next);
-
-            Q.isPromise(result).should.be.true;
-
-            result.then(function (data) {
-                    data.should.eql('fooresult');
-
-                    controller.index.calledOnce.should.be.true;
-                    controller.index.calledWith(controller, request, response, next);
-
-                    Module._requestFinished.calledOnce.should.be.true;
-                    Module._requestFinished.calledWith(controller, request, startTime);
-
-                    done();
-                })
-                .done();
-        });
-
-        it('should run controller and return non-promise result', function () {
+        it('should run controller', function () {
             var controller = {
                     index : sinon.spy(function () {
                         return 'fooresult';
@@ -719,24 +664,18 @@ describe('lib/router.js', function () {
                 route      = {
                     handler : 'index'
                 },
-                startTime  = 12345,
                 request    = {},
                 response   = {},
                 next       = {};
 
             Module = require('../../../lib/router');
             Module._requestFinished = sinon.spy();
-            var result = Module._runController(controller, route, startTime, request, response, next);
-
-            Q.isPromise(result).should.be.false;
+            var result = Module._runController(controller, route, request, response, next);
 
             result.should.eql('fooresult');
 
             controller.index.calledOnce.should.be.true;
             controller.index.calledWith(controller, request, response, next);
-
-            Module._requestFinished.calledOnce.should.be.true;
-            Module._requestFinished.calledWith(controller, request, startTime);
         });
     });
 

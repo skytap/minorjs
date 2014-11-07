@@ -399,4 +399,26 @@ describe('lib/controller.js', function () {
             });
         });
     });
+
+    describe('_requestFinished', function () {
+        it('should emit event', function () {
+            var request    = {
+                    minorjs : {
+                        page   : 'some/page',
+                        action : 'index',
+                        start  : 12345
+                    },
+                    method  : 'get'
+                };
+
+            Module      = require('../../../lib/controller');
+            module      = new Module();
+            module.emit = sinon.stub();
+
+            module._requestFinished(request);
+
+            module.emit.calledOnce.should.be.true;
+            module.emit.calledWith('request-started', request, sinon.match.object);
+        });
+    });
 });
