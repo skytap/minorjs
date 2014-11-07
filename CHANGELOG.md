@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 0.7.0, November 7th, 2014
+
+* Wait until the render is finished to log the request completion.
+* Now emitting events on the controller when the request starts and when rendering is finished.
+
 ## Version 0.6.1, October 15th, 2014
 
 * Include a stack trace in the error message when loading a controller fails.
