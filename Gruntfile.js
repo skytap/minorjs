@@ -14,7 +14,11 @@
  * limitations under the License.
  **/
 
-var extend = require('extend');
+var extend = require('extend'),
+    should = require('should');
+
+// should.eql is deprecated. turn off warnings for now.
+should.warn = false;
 
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');

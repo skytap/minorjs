@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.7.1, November 7th, 2014
+
+* Updated module dependencies.
+
 ## Version 0.7.0, November 7th, 2014
 
 * Wait until the render is finished to log the request completion.
