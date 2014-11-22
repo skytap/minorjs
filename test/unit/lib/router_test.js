@@ -292,7 +292,10 @@ describe('lib/router.js', function () {
                     handler : 'some handler'
                 },
                 request     = {
-                    url : 'some url'
+                    url   : 'some url',
+                    route : {
+                        path : 'some path'
+                    }
                 },
                 response    = {},
                 next        = {},
@@ -344,7 +347,10 @@ describe('lib/router.js', function () {
                     handler : 'some handler'
                 },
                 request     = {
-                    url : 'some url'
+                    url   : 'some url',
+                    route : {
+                        path : 'some path'
+                    }
                 },
                 response    = {},
                 next        = {},
@@ -473,45 +479,64 @@ describe('lib/router.js', function () {
         [
             {
                 url      : '',
+                path     : '/',
                 expected : []
             },
             {
                 url      : 'foobar',
+                path     : '/foobar',
                 expected : [ 'foobar' ]
             },
             {
                 url      : 'foobar/1',
+                path     : '/foobar/:id',
                 expected : [ 'foobar' ]
             },
             {
                 url      : 'foobar/1/edit',
+                path     : '/foobar/:id/edit',
                 expected : [ 'foobar' ]
             },
             {
                 url      : 'foobar/1/new',
+                path     : '/foobar/:id/new',
                 expected : [ 'foobar' ]
             },
             {
                 url      : 'foo/bar',
+                path     : '/foo/bar',
                 expected : [ 'foo', 'bar' ]
             },
             {
                 url      : 'foo/bar/1',
+                path     : '/foo/bar/:id',
                 expected : [ 'foo', 'bar' ]
             },
             {
                 url      : 'foo/bar/1/edit',
+                path     : '/foo/bar/:id/edit',
                 expected : [ 'foo', 'bar' ]
             },
             {
                 url      : 'foo/bar/1/new',
+                path     : '/foo/bar/:id/new',
+                expected : [ 'foo', 'bar' ]
+            },
+            {
+                url      : 'foo/9e107d9d372bb6826bd81d3542a419d6/bar',
+                path     : '/foo/:id/bar',
                 expected : [ 'foo', 'bar' ]
             }
         ]
         .forEach(function (testCase) {
             it('should return ' + JSON.stringify(testCase.expected) + ' when the URL is ' + JSON.stringify(testCase.url), function () {
+                var request = {
+                    route : {
+                        path : testCase.path
+                    }
+                };
                 Module = require('../../../lib/router');
-                Module._parseControllerName(testCase.url).should.eql(testCase.expected);
+                Module._parseControllerName(request).should.eql(testCase.expected);
             });
         });
     });

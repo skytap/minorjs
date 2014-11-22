@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.8.0, November 21st, 2014
+
+* Made the URL parsing code more flexible to support more resource ID formats.
+
 ## Version 0.7.1, November 7th, 2014
 
 * Updated module dependencies.
