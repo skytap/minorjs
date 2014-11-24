@@ -526,6 +526,11 @@ describe('lib/router.js', function () {
                 url      : 'foo/9e107d9d372bb6826bd81d3542a419d6/bar',
                 path     : '/foo/:id/bar',
                 expected : [ 'foo', 'bar' ]
+            },
+            {
+                url      : 'error',
+                path     : '/error',
+                expected : [ 'error' ]
             }
         ]
         .forEach(function (testCase) {
