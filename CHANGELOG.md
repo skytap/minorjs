@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.8.1, November 24th, 2014
+
+* Fixed a bug with determining the error controller name.
+
 ## Version 0.8.0, November 21st, 2014
 
 * Made the URL parsing code more flexible to support more resource ID formats.
