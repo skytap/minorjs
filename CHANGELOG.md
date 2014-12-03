@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.9.0, December 3rd, 2014
+
+* Reversed routes array resulting in deeper paths being registered first (dkramer).
+
 ## Version 0.8.1, November 24th, 2014
 
 * Fixed a bug with determining the error controller name.
