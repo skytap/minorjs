@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.10.0, December 8th, 2014
+
+* Added a failsafe if rendering the error page also fails.
+
 ## Version 0.9.0, December 3rd, 2014
 
 * Reversed routes array resulting in deeper paths being registered first (dkramer).
