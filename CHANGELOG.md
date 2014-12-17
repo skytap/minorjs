@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.10.1, December 17th, 2014
+
+* Added context id to environment.
+
 ## Version 0.10.0, December 8th, 2014
 
 * Added a failsafe if rendering the error page also fails.
