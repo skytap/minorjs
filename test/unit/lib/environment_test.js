@@ -51,6 +51,15 @@ describe('lib/environment.js', function () {
         });
     });
 
+    describe('getContextId', function () {
+        it('returns correct context id', function () {
+            var contextId = '5cd03c6306834f81a5ee2fd3a18d254e.10061';
+            Module = require('../../../lib/environment');
+            Module.contextId = contextId;
+            Module.getContextId().should.eql(contextId);
+        });
+    });
+
     describe('initialize', function () {
         it('returns correct instance', function () {
             var configs = { 'foo' : 'bar' },
