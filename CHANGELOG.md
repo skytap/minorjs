@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 0.11.0, December 30th, 2014
+
+* Updated module dependencies.
+* Switched from static-favicon to serve-favicon.
+
 ## Version 0.10.1, December 17th, 2014
 
 * Added context id to environment.
