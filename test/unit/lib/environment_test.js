@@ -60,6 +60,15 @@ describe('lib/environment.js', function () {
         });
     });
 
+    describe('getContextName', function () {
+        it('returns correct specified context name', function () {
+            var contextName = 'mycontext';
+            Module = require('../../../lib/environment');
+            Module.contextName = contextName;
+            Module.getContextName().should.eql(contextName);
+        });
+    });
+
     describe('initialize', function () {
         it('returns correct instance', function () {
             var configs = { 'foo' : 'bar' },
@@ -87,6 +96,7 @@ describe('lib/environment.js', function () {
             Module.basePath.should.eql('somebasepath');
             Module.instance.should.eql(42);
             Module.loggers.should.eql([ 'some loggers' ]);
+            Module.contextName.should.eql('minorjs');
 
             Module._loadConfigs.calledOnce.should.be.true;
             Module._initLogger.calledOnce.should.be.true;
