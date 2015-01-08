@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.11.1, January 8th, 2015
+
+* Added context name to the environment module (jsu).
+
 ## Version 0.11.0, December 30th, 2014
 
 * Updated module dependencies.
