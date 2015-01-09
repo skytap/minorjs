@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.11.2, January 8th, 2015
+
+* Allow end time as optional param for Logger.profile (jsu).
+
 ## Version 0.11.1, January 8th, 2015
 
 * Added context name to the environment module (jsu).
