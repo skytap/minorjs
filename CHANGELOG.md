@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 0.12.0, January 16th, 2015
+
+* Updating tests for browser id and logging changes (jsu).
+* Adding browser context id and changing logging parameter order (jsu).
+
 ## Version 0.11.2, January 8th, 2015
 
 * Allow end time as optional param for Logger.profile (jsu).
