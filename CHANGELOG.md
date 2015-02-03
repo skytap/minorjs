@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.13.0, February 3rd, 2015
+
+* Allow controller to yield (e.g. to an extending class) the responsibility of sending the response to the client (kjacobson).
+
 ## Version 0.12.0, January 16th, 2015
 
 * Updating tests for browser id and logging changes (jsu).
