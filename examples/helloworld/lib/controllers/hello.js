@@ -24,5 +24,10 @@ util.inherits(HelloController, Controller);
 HelloController.prototype.index = function (request, response, next) {
   this.render(request, response, 'hello/index');
 }
+HelloController.prototype.new   = function (request, response, next) {
+  this.render(request, response, 'hello/new', null, false).done(function(val) {
+    response.send(val);
+  });
+}
 
 module.exports = HelloController;
