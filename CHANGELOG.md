@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.14.0, February 5th, 2015
+
+* Moved template engine configuration into a plugin module. This makes it easier to override the default haml-coffee template engine.
+
 ## Version 0.13.0, February 3rd, 2015
 
 * Allow controller to yield (e.g. to an extending class) the responsibility of sending the response to the client (kjacobson).
