@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.15.0, February 11th, 2015
+
+* Fixed a bug with conditionally sending a response after a render.
+
 ## Version 0.14.0, February 5th, 2015
 
 * Moved template engine configuration into a plugin module. This makes it easier to override the default haml-coffee template engine.
