@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.15.1, February 15th, 2015
+
+* Upgraded to the latest version of minorjs-test and zombie.
+
 ## Version 0.15.0, February 11th, 2015
 
 * Fixed a bug with conditionally sending a response after a render.
