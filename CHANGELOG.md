@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 0.15.2, February 18th, 2015
+
+* Make the error template filename a constant on the controller.
+
 ## Version 0.15.1, February 15th, 2015
 
 * Upgraded to the latest version of minorjs-test and zombie.
