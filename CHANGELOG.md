@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 1.0.1, February 19th, 2015
+
+* Show a generic error if the error page also generates an error.
+
 ## Version 1.0.0, February 19th, 2015
 
 * Stopped using zero based versioning for the project.
