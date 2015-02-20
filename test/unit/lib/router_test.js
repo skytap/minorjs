@@ -17,7 +17,7 @@
 var should  = require('should'),
     sinon   = require('sinon'),
     Backhoe = require('backhoe'),
-    Q       = require('q'),
+    Promise = require('bluebird'),
     Module;
 
 describe('lib/router.js', function () {
@@ -303,7 +303,7 @@ describe('lib/router.js', function () {
                 next        = {},
                 Filter      = {
                     run : sinon.spy(function () {
-                        return Q(true);
+                        return Promise.resolve(true);
                     })
                 },
                 Logger         = {
@@ -359,7 +359,7 @@ describe('lib/router.js', function () {
                 error       = 'some error',
                 Filter      = {
                     run : sinon.spy(function () {
-                        return Q.reject(error);
+                        return Promise.reject(error);
                     })
                 },
                 Logger         = {
@@ -424,7 +424,7 @@ describe('lib/router.js', function () {
                 next        = {},
                 Filter      = {
                     run : sinon.spy(function () {
-                        return Q(true);
+                        return Promise.resolve(true);
                     })
                 },
                 Logger         = {
@@ -506,7 +506,7 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
             Module._loadController = sinon.spy(function () {
-                return Q('fooresult');
+                return Promise.resolve('fooresult');
             });
             Module._loadAllControllers(app, controllerPath, files)
                 .then(function (results) {

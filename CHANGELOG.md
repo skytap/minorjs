@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 1.0.0, February 19th, 2015
+
+* Stopped using zero based versioning for the project.
+* Switched from Q to bluebird promises. bluebird implements Promises/A+.
+
 ## Version 0.15.2, February 18th, 2015
 
 * Make the error template filename a constant on the controller.

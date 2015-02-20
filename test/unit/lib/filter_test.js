@@ -14,11 +14,10 @@
  * limitations under the License.
  **/
 
-var should = require('should'),
-    sinon  = require('sinon'),
+var path    = require('path'),
+    should  = require('should'),
+    sinon   = require('sinon'),
     Backhoe = require('backhoe'),
-    path   = require('path'),
-    Q      = require('q'),
     Module;
 
 describe('lib/filter.js', function () {
@@ -199,7 +198,7 @@ describe('lib/filter.js', function () {
                     should.fail();
                     done();
                 })
-                .fail(function (error) {
+                .catch(function (error) {
                     error.message.should.eql('failing filter');
                     Module.filters.bar_filter.process.calledOnce.should.be.true;
                     Module.filters.bar_filter.process.calledWith(request, response, next);
@@ -272,7 +271,7 @@ describe('lib/filter.js', function () {
             var result = Module._runFilter(filter, request, response, next);
             result.should.be.type('function');
             result()
-                .fail(function (error) {
+                .catch(function (error) {
                     error.message.should.eql('some error');
                     Module.filters.foo_filter.process.calledOnce.should.be.true;
                     done();
