@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 1.1.0, February 25th, 2015
+
+* Upgraded dependencies.
+
 ## Version 1.0.1, February 19th, 2015
 
 * Show a generic error if the error page also generates an error.
