@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 1.2.0, March 5th, 2015
+
+* Added controller timeout option (jsu).
+
 ## Version 1.1.0, February 25th, 2015
 
 * Upgraded dependencies.
