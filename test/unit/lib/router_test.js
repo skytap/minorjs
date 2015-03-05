@@ -314,6 +314,7 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
 
+            Module.options = {controllerTimeout: 180000};
             Module._handleError = sinon.spy();
             Module._runController = sinon.spy(function () {
                 Filter.run.calledOnce.should.be.true;
@@ -370,6 +371,7 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
 
+            Module.options = {controllerTimeout: 180000};
             Module._runController = sinon.spy();
 
             controller._handleError = sinon.spy(function () {
