@@ -1,5 +1,43 @@
 # MinorJS Changelog
 
+## Version 1.1.0, February 25th, 2015
+
+* Upgraded dependencies.
+
+## Version 1.0.1, February 19th, 2015
+
+* Show a generic error if the error page also generates an error.
+
+## Version 1.0.0, February 19th, 2015
+
+* Stopped using zero based versioning for the project.
+* Switched from Q to bluebird promises. bluebird implements Promises/A+.
+
+## Version 0.15.2, February 18th, 2015
+
+* Make the error template filename a constant on the controller.
+
+## Version 0.15.1, February 15th, 2015
+
+* Upgraded to the latest version of minorjs-test and zombie.
+
+## Version 0.15.0, February 11th, 2015
+
+* Fixed a bug with conditionally sending a response after a render.
+
+## Version 0.14.0, February 5th, 2015
+
+* Moved template engine configuration into a plugin module. This makes it easier to override the default haml-coffee template engine.
+
+## Version 0.13.0, February 3rd, 2015
+
+* Allow controller to yield (e.g. to an extending class) the responsibility of sending the response to the client (kjacobson).
+
+## Version 0.12.0, January 16th, 2015
+
+* Updating tests for browser id and logging changes (jsu).
+* Adding browser context id and changing logging parameter order (jsu).
+
 ## Version 0.11.2, January 8th, 2015
 
 * Allow end time as optional param for Logger.profile (jsu).

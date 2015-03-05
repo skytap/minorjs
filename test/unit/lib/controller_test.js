@@ -59,7 +59,7 @@ describe('lib/controller.js', function () {
             module = new Module();
             module.addFiltersForHandler(url, handler);
 
-            module.filtersByRoute.should.eql({
+            module.filtersByRoute.should.containDeep({
                 'someurl' : {
                     'somehandler' : []
                 }
@@ -79,7 +79,7 @@ describe('lib/controller.js', function () {
 
             module.addFiltersForHandler(url, handler);
 
-            module.filtersByRoute.should.eql({
+            module.filtersByRoute.should.containDeep({
                 'someurl' : {
                     'somehandler' : []
                 }
@@ -99,7 +99,7 @@ describe('lib/controller.js', function () {
 
             module.addFiltersForHandler(url, handler);
 
-            module.filtersByRoute.should.eql({
+            module.filtersByRoute.should.containDeep({
                 'someurl' : {
                     'somehandler' : [
                         'index'
@@ -121,7 +121,7 @@ describe('lib/controller.js', function () {
 
             module.addFiltersForHandler(url, handler);
 
-            module.filtersByRoute.should.eql({
+            module.filtersByRoute.should.containDeep({
                 'someurl' : {
                     'somehandler' : [
                         'index'

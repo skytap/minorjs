@@ -29,4 +29,14 @@ describe('/hello', function () {
       })
       .done();
   });
+
+  it('should successfully load the new page which defers rendering to the hello controller', function (done) {
+    FunctionalTest.browser.visit(FunctionalTest.getUrl('/hello/new'))
+      .then(function () {
+        FunctionalTest.browser.location.pathname.should.eql('/hello/new');
+        FunctionalTest.browser.text('h1').should.eql('Welcome to the new hello page!');
+        done();
+      })
+      .done();
+  });
 });

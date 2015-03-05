@@ -17,7 +17,7 @@
 var should  = require('should'),
     sinon   = require('sinon'),
     Backhoe = require('backhoe'),
-    Q       = require('q'),
+    Promise = require('bluebird'),
     Module;
 
 describe('lib/router.js', function () {
@@ -295,13 +295,15 @@ describe('lib/router.js', function () {
                     url   : 'some url',
                     route : {
                         path : 'some path'
-                    }
+                    },
+                    get   : sinon.spy()
                 },
+
                 response    = {},
                 next        = {},
                 Filter      = {
                     run : sinon.spy(function () {
-                        return Q(true);
+                        return Promise.resolve(true);
                     })
                 },
                 Logger         = {
@@ -329,7 +331,6 @@ describe('lib/router.js', function () {
 
                 done();
             });
-
             Module._handleRequest(url, route, startTime, controller, request, response, next);
         });
 
@@ -351,14 +352,15 @@ describe('lib/router.js', function () {
                     url   : 'some url',
                     route : {
                         path : 'some path'
-                    }
+                    },
+                    get   : sinon.spy()
                 },
                 response    = {},
                 next        = {},
                 error       = 'some error',
                 Filter      = {
                     run : sinon.spy(function () {
-                        return Q.reject(error);
+                        return Promise.reject(error);
                     })
                 },
                 Logger         = {
@@ -387,6 +389,67 @@ describe('lib/router.js', function () {
             });
 
             Module._handleRequest(url, route, startTime, controller, request, response, next);
+        });
+
+        it('should handle browser id generation', function (done) {
+            var url         = 'some/url',
+                filters     = [ 'some filters' ],
+                controller  = {
+                    getFilters : sinon.spy(function () {
+                        return filters;
+                    })
+                },
+                route       = {
+                    handler : 'some handler'
+                },
+                req_w_id    = {
+                    url                  : 'some url',
+                    route                : {
+                        path : 'some path'
+                    },
+                    'Browser-Context-Id' : 'some browser id',
+                    get                  : sinon.spy(function(key){
+                        return this[key];
+                    })
+                },
+                req_no_id   = {
+                    url   : 'some url',
+                    route : {
+                        path : 'some path'
+                    },
+                    get   : sinon.spy(function(key){
+                        return this[key];
+                    })
+                },
+
+                response    = {},
+                next        = {},
+                Filter      = {
+                    run : sinon.spy(function () {
+                        return Promise.resolve(true);
+                    })
+                },
+                Logger         = {
+                    info : sinon.spy()
+                },
+                startTime = Date.now();
+
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
+
+            Module = require('../../../lib/router');
+
+            Module._runController = sinon.spy();
+            Module._handleError = sinon.spy();
+
+            Module._handleRequest(url, route, startTime, controller, req_w_id, response, next);
+            req_w_id.get.calledWith('Browser-Context-Id');
+            req_w_id.minorjs.browserId.should.eql('some browser id');
+
+            Module._handleRequest(url, route, startTime, controller, req_no_id, response, next);
+            req_no_id.get.calledWith('Browser-Context-Id');
+            req_no_id.minorjs.browserId.indexOf('browser').should.eql(0);
+
+            done();
         });
     });
 
@@ -445,7 +508,7 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
             Module._loadController = sinon.spy(function () {
-                return Q('fooresult');
+                return Promise.resolve('fooresult');
             });
             Module._loadAllControllers(app, controllerPath, files)
                 .then(function (results) {

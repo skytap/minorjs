@@ -14,11 +14,10 @@
  * limitations under the License.
  **/
 
-var should  = require('should'),
+var path    = require('path'),
+    should  = require('should'),
     sinon   = require('sinon'),
     Backhoe = require('backhoe'),
-    path    = require('path'),
-    Q       = require('q'),
     Module;
 
 describe('lib/logger.js', function () {
@@ -66,7 +65,7 @@ describe('lib/logger.js', function () {
                 start = 12345;
 
             Module = require('../../../lib/logger');
-            Module._log = sinon.spy(function (level, request, message) {
+            Module._log = sinon.spy(function (level, message, request) {
                 level.should.eql('debug');
                 message.should.match(/Performance: some name took [0-9]*ms/);
             });

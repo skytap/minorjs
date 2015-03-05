@@ -14,11 +14,10 @@
  * limitations under the License.
  **/
 
-var should  = require('should'),
+var path    = require('path'),
+    should  = require('should'),
     sinon   = require('sinon'),
     Backhoe = require('backhoe'),
-    path    = require('path'),
-    Q       = require('q'),
     Module;
 
 describe('lib/template.js', function () {
