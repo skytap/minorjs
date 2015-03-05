@@ -440,6 +440,7 @@ describe('lib/router.js', function () {
 
             Module._runController = sinon.spy();
             Module._handleError = sinon.spy();
+            Module.options = {controllerTimeout: 180000};
 
             Module._handleRequest(url, route, startTime, controller, req_w_id, response, next);
             req_w_id.get.calledWith('Browser-Context-Id');
