@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 1.3.3, June 1st, 2015
+
+* Upgraded minorjs-test module.
+
 ## Version 1.3.2, June 1st, 2015
 
 * Upgraded dev dependencies.
