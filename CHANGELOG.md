@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 1.3.2, June 1st, 2015
+
+* Upgraded dev dependencies.
+
 ## Version 1.3.1, April 9th, 2015
 
 * Upgraded dev dependencies.
