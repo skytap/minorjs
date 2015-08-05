@@ -26,7 +26,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('tests', [
     'mochaTest:unit',
-    'shell:functional'
+    'shell:functional',
+    'shell:cucumber'
   ]);
 
   grunt.initConfig({
@@ -48,6 +49,15 @@ module.exports = function (grunt) {
     shell : {
       functional : {
         command : './test/minorjs-test',
+        options : {
+          execOptions : {
+            env : extend({ MOCHA_COLORS : true }, process.env)
+          }
+        }
+      },
+
+      cucumber : {
+        command : './test/minorjs-cuke-test',
         options : {
           execOptions : {
             env : extend({ MOCHA_COLORS : true }, process.env)
