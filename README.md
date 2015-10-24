@@ -9,7 +9,6 @@ MinorJS is an unopinionated, ultra-minimal web framework that alleviates the pai
 
 By starting with MinorJS you maintain the freedom to develop your application with whichever technologies and philosophies you find appropriate for your Node.js project. MinorJS only handles routing, testing, and deployment clustering, ensuring that you have the tools to develop with speed and ship with confidence.
 
-
 ## Installation
 
 This package is available on npm as:
@@ -43,6 +42,10 @@ tools like Mocha and Should.
 ## CoffeeScript-friendly
 
 While MinorJS is written in Javascript, the framework happily works with CoffeeScript.
+
+## Node.js 0.10
+
+minorjs version 2 and newer works with Node.js 4.  If you need to run minorjs on Node.js 0.10 you can install minorjs version 1.4.0.
 
 ## License
 
