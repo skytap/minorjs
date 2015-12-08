@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 2.1.0, December 7th, 2015
+
+* Updated module dependencies.
+
 ## Version 2.0.0, October 23rd, 2015
 
 * Now with support for Node.js 4.

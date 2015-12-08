@@ -1,7 +1,7 @@
 {
   "copyright": "Copyright 2015 Skytap Inc. Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at     http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.",
   "name": "minorjs",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Clustered web framework that favors convention over configuration.",
   "author": {
     "name": "Skytap",
@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/skytap/minorjs",
   "dependencies": {
-    "bluebird": "~2.10.2",
+    "bluebird": "~3.0.6",
     "express": "~4.13.3",
     "express-partials": "~0.3.0",
     "extend": "~3.0.0",
@@ -57,18 +57,18 @@
     "backhoe": "~0.0.3",
     "humanize-plus": "~1.5.0",
     "inflected": "~1.1.6",
-    "node-uuid": "~1.4.3"
+    "node-uuid": "~1.4.7"
   },
   "devDependencies": {
     "should": "~7.1.0",
     "sinon": "~1.17.1",
-    "mocha": "~2.3.3",
-    "winston": "~1.1.0",
+    "mocha": "~2.3.4",
+    "winston": "~2.1.1",
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
     "grunt-mocha-test": "~0.12.7",
     "grunt-shell": "~1.1.2",
-    "minorjs-test": "~3.0.0"
+    "minorjs-test": "~3.1.1"
   },
   "scripts": {
     "test": "grunt tests"
