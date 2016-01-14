@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 2.3.0, January 14th, 2016
+
+* Added support for supplying a logger module instead of just a logger name.
+
 ## Version 2.2.0, December 8th, 2015
 
 * Updated module dependencies.
