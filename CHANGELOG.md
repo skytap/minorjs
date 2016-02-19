@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 2.4.0, February 19th, 2016
+
+* make noCache configurable
+
 ## Version 2.3.0, January 14th, 2016
 
 * Added support for supplying a logger module instead of just a logger name.
