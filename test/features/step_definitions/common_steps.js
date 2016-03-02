@@ -14,6 +14,10 @@ var CommonSteps = module.exports = function () {
     return FunctionalTest.browser.visit(FunctionalTest.getUrl('/random'))
   });
 
+  this.Given(/^I am on the frames page$/, function () {
+    return FunctionalTest.browser.visit(FunctionalTest.getUrl('/frames'))
+  });
+
   this.Then(/^the page URL is "([^"]*)"$/, function (text, next) {
     FunctionalTest.browser.location.pathname.should.eql(text);
     next();
@@ -26,6 +30,11 @@ var CommonSteps = module.exports = function () {
 
   this.Then(/^the page header text is random color$/, function (next) {
     FunctionalTest.browser.text('h1').should.match(/Today's color of the day is: (\w*)./);
+    next();
+  });
+
+  this.Then(/^the name is "([^"]*)"$/, function (text, next) {
+    FunctionalTest.browser.text('.name').should.eql(text);
     next();
   });
 }
