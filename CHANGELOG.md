@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 2.4.1, March 2nd, 2016
+
+* docs: added minorjs-frames to the example app
+
 ## Version 2.4.0, February 19th, 2016
 
 * make noCache configurable
