@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 2.4.3, June 21st, 2016
+
+* chore: updated module dependencies
+
 ## Version 2.4.2, April 19th, 2016
 
 * fix: provide stub implementations of Logger methods
