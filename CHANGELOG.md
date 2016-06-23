@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 2.5.0, June 23rd, 2016
+
+* feature: add jitter to the worker restart interval
+
 ## Version 2.4.3, June 21st, 2016
 
 * chore: updated module dependencies
