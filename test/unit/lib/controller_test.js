@@ -44,7 +44,7 @@ describe('lib/controller.js', function () {
                 module = new Module();
                 module[action](request, response, next);
 
-                next.calledOnce.should.be.true;
+                next.calledOnce.should.be.true();
             });
         });
     });
@@ -206,11 +206,11 @@ describe('lib/controller.js', function () {
             module._getFullError = sinon.spy();
             module._handleError(request, response, error);
 
-            Identifier.generate.calledOnce.should.be.true;
-            module._getFullError.calledOnce.should.be.true;
+            Identifier.generate.calledOnce.should.be.true();
+            module._getFullError.calledOnce.should.be.true();
             module._getFullError.calledWith(request, response, error, incidentId);
 
-            Logger.error.calledOnce.should.be.true;
+            Logger.error.calledOnce.should.be.true();
         });
 
         it('should call XHR handler', function () {
@@ -240,11 +240,11 @@ describe('lib/controller.js', function () {
             module._getFullError = sinon.spy();
             module._handleError(request, response, error);
 
-            module._handleXhrError.calledOnce.should.be.true;
+            module._handleXhrError.calledOnce.should.be.true();
             module._handleXhrError.calledWith(request, response, error);
-            module._handleNormalError.called.should.be.false;
+            module._handleNormalError.called.should.be.false();
 
-            Logger.error.calledOnce.should.be.true;
+            Logger.error.calledOnce.should.be.true();
         });
 
         it('should call non-XHR handler', function () {
@@ -277,11 +277,11 @@ describe('lib/controller.js', function () {
             });
             module._handleError(request, response, error);
 
-            module._handleNormalError.calledOnce.should.be.true;
+            module._handleNormalError.calledOnce.should.be.true();
             module._handleNormalError.calledWith(request, response, error, incidentId, fullError);
-            module._handleXhrError.called.should.be.false;
+            module._handleXhrError.called.should.be.false();
 
-            Logger.error.calledOnce.should.be.true;
+            Logger.error.calledOnce.should.be.true();
         });
     });
 
@@ -303,10 +303,10 @@ describe('lib/controller.js', function () {
             module = new Module();
             module._handleXhrError(request, response, error);
 
-            response.status.calledOnce.should.be.true;
+            response.status.calledOnce.should.be.true();
             response.status.calledWith(500);
 
-            response.send.calledOnce.should.be.true;
+            response.send.calledOnce.should.be.true();
             response.send.calledWith(
                 {
                     success : false,
@@ -345,13 +345,13 @@ describe('lib/controller.js', function () {
             module.render = sinon.spy();
             module._handleNormalError(request, response, error, incidentId, fullError);
 
-            response.status.calledOnce.should.be.true;
+            response.status.calledOnce.should.be.true();
             response.status.calledWith(500);
 
-            module._getUserError.calledOnce.should.be.true;
+            module._getUserError.calledOnce.should.be.true();
             module._getUserError.calledWith(request, response, error, incidentId);
 
-            module.render.calledOnce.should.be.true;
+            module.render.calledOnce.should.be.true();
             module.render.calledWith(request, response, 'error', {
                 error     : userError,
                 fullError : error.stack
@@ -386,13 +386,13 @@ describe('lib/controller.js', function () {
             module.render = sinon.spy();
             module._handleNormalError(request, response, error, incidentId, fullError);
 
-            response.status.calledOnce.should.be.true;
+            response.status.calledOnce.should.be.true();
             response.status.calledWith(500);
 
-            module._getUserError.calledOnce.should.be.true;
+            module._getUserError.calledOnce.should.be.true();
             module._getUserError.calledWith(request, response, error, incidentId);
 
-            module.render.calledOnce.should.be.true;
+            module.render.calledOnce.should.be.true();
             module.render.calledWith(request, response, 'error', {
                 error     : userError,
                 fullError : null
@@ -417,7 +417,7 @@ describe('lib/controller.js', function () {
 
             module._requestFinished(request);
 
-            module.emit.calledOnce.should.be.true;
+            module.emit.calledOnce.should.be.true();
             module.emit.calledWith('request-started', request, sinon.match.object);
         });
     });

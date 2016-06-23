@@ -64,7 +64,7 @@ describe('lib/filter.js', function () {
                 .then(function () {
                     Module.filters.bar_filter.name.should.eql(expected.bar_filter.name);
                     Module.filters.foo_filter.name.should.eql(expected.foo_filter.name);
-                    Logger.profile.called.should.be.true;
+                    Logger.profile.called.should.be.true();
                     done();
                 })
                 .done();
@@ -123,10 +123,10 @@ describe('lib/filter.js', function () {
             };
             Module.run(filters, request, response, next)
                 .then(function (results) {
-                    results.should.be.true;
-                    Module.filters.bar_filter.process.calledOnce.should.be.true;
+                    results.should.be.true();
+                    Module.filters.bar_filter.process.calledOnce.should.be.true();
                     Module.filters.bar_filter.process.calledWith(request, response, next);
-                    Module.filters.foo_filter.process.calledOnce.should.be.true;
+                    Module.filters.foo_filter.process.calledOnce.should.be.true();
                     Module.filters.foo_filter.process.calledWith(request, response, next);
                     done();
                 })
@@ -159,9 +159,9 @@ describe('lib/filter.js', function () {
             };
             Module.run(filters, request, response, next)
                 .then(function (results) {
-                    results.should.be.true;
-                    Module.filters.bar_filter.process.calledOnce.should.be.false;
-                    Module.filters.foo_filter.process.calledOnce.should.be.true;
+                    results.should.be.true();
+                    Module.filters.bar_filter.process.calledOnce.should.be.false();
+                    Module.filters.foo_filter.process.calledOnce.should.be.true();
                     Module.filters.foo_filter.process.calledWith(request, response, next);
                     done();
                 })
@@ -200,9 +200,9 @@ describe('lib/filter.js', function () {
                 })
                 .catch(function (error) {
                     error.message.should.eql('failing filter');
-                    Module.filters.bar_filter.process.calledOnce.should.be.true;
+                    Module.filters.bar_filter.process.calledOnce.should.be.true();
                     Module.filters.bar_filter.process.calledWith(request, response, next);
-                    Module.filters.foo_filter.process.calledOnce.should.be.false;
+                    Module.filters.foo_filter.process.calledOnce.should.be.false();
                     done();
                 })
                 .done();
@@ -240,8 +240,8 @@ describe('lib/filter.js', function () {
             result()
                 .then(function (value) {
                     value.should.eql(expected);
-                    Module.filters.bar_filter.process.calledOnce.should.be.false;
-                    Module.filters.foo_filter.process.calledOnce.should.be.true;
+                    Module.filters.bar_filter.process.calledOnce.should.be.false();
+                    Module.filters.foo_filter.process.calledOnce.should.be.true();
                     Module.filters.foo_filter.process.calledWith(request, response, next);
                     done();
                 })
@@ -273,7 +273,7 @@ describe('lib/filter.js', function () {
             result()
                 .catch(function (error) {
                     error.message.should.eql('some error');
-                    Module.filters.foo_filter.process.calledOnce.should.be.true;
+                    Module.filters.foo_filter.process.calledOnce.should.be.true();
                     done();
                 })
                 .done();

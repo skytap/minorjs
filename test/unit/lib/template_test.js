@@ -61,7 +61,7 @@ describe('lib/template.js', function () {
             Module.loadMixins(templatesPath)
                 .then(function () {
                     Module.mixins.should.eql(expected);
-                    Logger.profile.called.should.be.true;
+                    Logger.profile.called.should.be.true();
                     done();
                 })
                 .done();

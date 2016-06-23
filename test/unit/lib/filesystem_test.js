@@ -64,7 +64,7 @@ describe('lib/filesystem.js', function () {
                 .then(function (results) {
                     results.another_controller.prototype.name.should.eql('another_controller');
                     results.baz_controller.prototype.name.should.eql('baz_controller');
-                    Logger.profile.called.should.be.true;
+                    Logger.profile.called.should.be.true();
                     done();
                 })
                 .done();

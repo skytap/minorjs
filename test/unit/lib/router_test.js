@@ -39,7 +39,7 @@ describe('lib/router.js', function () {
             Module._loadAllControllers = sinon.spy();
             Module.load(app, controllers)
                 .then(function () {
-                    Module._loadAllControllers.calledOnce.should.be.true;
+                    Module._loadAllControllers.calledOnce.should.be.true();
                     Module._loadAllControllers.calledWith(app, controllers, expected);
                     done();
                 })
@@ -62,9 +62,9 @@ describe('lib/router.js', function () {
             });
             Module._buildRoutes(app, controller, url);
 
-            Module._getRoutesForUrl.calledOnce.should.be.true;
+            Module._getRoutesForUrl.calledOnce.should.be.true();
             Module._getRoutesForUrl.calledWith(url);
-            Module._registerRoute.calledOnce.should.be.true;
+            Module._registerRoute.calledOnce.should.be.true();
             Module._registerRoute.calledWith(app, controller, url, route);
         });
     });
@@ -319,15 +319,15 @@ describe('lib/router.js', function () {
             Module.options = {controllerTimeout: 180000};
             Module._handleError = sinon.spy();
             Module._runController = sinon.spy(function () {
-                Filter.run.calledOnce.should.be.true;
+                Filter.run.calledOnce.should.be.true();
                 Filter.run.calledWith(filters, request, response, next);
 
-                controller.getFilters.calledOnce.should.be.true;
+                controller.getFilters.calledOnce.should.be.true();
                 controller.getFilters.calledWith(url, route.handler);
 
-                Module._runController.calledOnce.should.be.true;
+                Module._runController.calledOnce.should.be.true();
 
-                Module._handleError.called.should.be.false;
+                Module._handleError.called.should.be.false();
 
                 done();
             });
@@ -377,13 +377,13 @@ describe('lib/router.js', function () {
             Module._runController = sinon.spy();
 
             controller._handleError = sinon.spy(function () {
-                Filter.run.calledOnce.should.be.true;
+                Filter.run.calledOnce.should.be.true();
                 Filter.run.calledWith(filters, request, response, next);
 
-                controller.getFilters.calledOnce.should.be.true;
+                controller.getFilters.calledOnce.should.be.true();
                 controller.getFilters.calledWith(url, route.handler);
 
-                Module._runController.called.should.be.false;
+                Module._runController.called.should.be.false();
 
                 done();
             });
@@ -466,13 +466,21 @@ describe('lib/router.js', function () {
 
             Module = require('../../../lib/router');
             var result = Module._handleDevelopmentRequest(controller, url, route);
-            result.addFiltersForHandler.calledOnce.should.be.true;
+            result.addFiltersForHandler.calledOnce.should.be.true();
             result.addFiltersForHandler.calledWith(url, route.handler);
             result.path.should.eql(controller.path);
         });
     });
 
     describe('_incrementRequestCount', function () {
+        beforeEach(function () {
+            var Logger = {
+                info : sinon.spy()
+            };
+
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
+        });
+
         it('should increment count', function () {
             Module = require('../../../lib/router');
             Module.requestCount.should.eql(0);
@@ -491,7 +499,7 @@ describe('lib/router.js', function () {
 
             process.on('message', function (message) {
                 message.should.eql('shutdown');
-                Module._shouldStopWorker.calledOnce.should.be.true;
+                Module._shouldStopWorker.calledOnce.should.be.true();
                 done();
             });
 
@@ -514,7 +522,7 @@ describe('lib/router.js', function () {
             Module._loadAllControllers(app, controllerPath, files)
                 .then(function (results) {
                     results.should.eql([ 'fooresult' ]);
-                    Module._loadController.calledOnce.should.be.true;
+                    Module._loadController.calledOnce.should.be.true();
                     Module._loadController.calledWith(app, controllerPath, 'foo');
                     done();
                 })
@@ -536,8 +544,8 @@ describe('lib/router.js', function () {
             Module = require('../../../lib/router');
             Module._buildRoutes = sinon.spy();
             Module._loadController(app, controllerPath, file);
-            Module._buildRoutes.calledOnce.should.be.true;
-            Logger.profile.calledOnce.should.be.true;
+            Module._buildRoutes.calledOnce.should.be.true();
+            Logger.profile.calledOnce.should.be.true();
         });
     });
 
@@ -650,18 +658,18 @@ describe('lib/router.js', function () {
             Module._handleRequest = sinon.spy();
             Module._registerRoute(app, controller, url, route);
 
-            controller.addFiltersForHandler.calledOnce.should.be.true;
+            controller.addFiltersForHandler.calledOnce.should.be.true();
             controller.addFiltersForHandler.calledWith(url, route.handler);
-            controller.emit.calledOnce.should.be.true;
+            controller.emit.calledOnce.should.be.true();
             controller.emit.calledWith('request-started', request);
 
-            Module._incrementRequestCount.calledOnce.should.be.true;
+            Module._incrementRequestCount.calledOnce.should.be.true();
 
-            Module._handleRequest.calledOnce.should.be.true;
+            Module._handleRequest.calledOnce.should.be.true();
             Module._handleRequest.calledWith(url, route, sinon.match.number, controller, request, response, next);
 
-            Logger.debug.calledOnce.should.be.true;
-            Environment.isDevelopment.calledOnce.should.be.true;
+            Logger.debug.calledOnce.should.be.true();
+            Environment.isDevelopment.calledOnce.should.be.true();
         });
 
         it('should register route for development', function () {
@@ -701,10 +709,10 @@ describe('lib/router.js', function () {
             Module._handleRequest = sinon.spy();
             Module._registerRoute(app, controller, url, route);
 
-            Module._handleDevelopmentRequest.calledOnce.should.be.true;
+            Module._handleDevelopmentRequest.calledOnce.should.be.true();
             Module._handleDevelopmentRequest.calledWith(controller, url, route);
 
-            Environment.isDevelopment.calledOnce.should.be.true;
+            Environment.isDevelopment.calledOnce.should.be.true();
         });
 
         it('should register route for production', function () {
@@ -744,9 +752,9 @@ describe('lib/router.js', function () {
             Module._handleRequest = sinon.spy();
             Module._registerRoute(app, controller, url, route);
 
-            Module._handleDevelopmentRequest.called.should.be.false;
+            Module._handleDevelopmentRequest.called.should.be.false();
 
-            Environment.isDevelopment.calledOnce.should.be.true;
+            Environment.isDevelopment.calledOnce.should.be.true();
         });
     });
 
@@ -770,7 +778,7 @@ describe('lib/router.js', function () {
 
             result.should.eql('fooresult');
 
-            controller.index.calledOnce.should.be.true;
+            controller.index.calledOnce.should.be.true();
             controller.index.calledWith(controller, request, response, next);
         });
     });
@@ -783,8 +791,12 @@ describe('lib/router.js', function () {
                 isWorker : sinon.spy(function () {
                     return true;
                 })
+            },
+            Logger         = {
+                info : sinon.spy()
             };
 
+            Backhoe.mock(require.resolve('../../../lib/logger'), Logger);
             Backhoe.mock(require.resolve('../../../lib/environment'), Environment);
         });
 
@@ -793,40 +805,47 @@ describe('lib/router.js', function () {
             Config.configs = {};
             Module = require('../../../lib/router');
             Module.requestCount = 100;
-            Module._shouldStopWorker().should.be.false;
+            Module._shouldStopWorker().should.be.false();
         });
 
         it('should return false if max requests are set and under limit', function () {
             var Config  = require('../../../lib/config');
-            Config.set('max_requests', 2);
-
             Module = require('../../../lib/router');
+            Module.maxRequests  = 2;
             Module.requestCount = 1;
-            Module._shouldStopWorker().should.be.false;
+            Module._shouldStopWorker().should.be.false();
 
-            Environment.isWorker.calledOnce.should.be.true;
+            Environment.isWorker.calledOnce.should.be.true();
         });
 
         it('should return true if max requests are set and at limit', function () {
             var Config  = require('../../../lib/config');
-            Config.set('max_requests', 2);
-
             Module = require('../../../lib/router');
+            Module.maxRequests  = 2;
             Module.requestCount = 2;
-            Module._shouldStopWorker().should.be.true;
+            Module._shouldStopWorker().should.be.true();
 
-            Environment.isWorker.calledOnce.should.be.true;
+            Environment.isWorker.calledOnce.should.be.true();
         });
 
         it('should return true if max requests are set and over limit', function () {
             var Config  = require('../../../lib/config');
-            Config.set('max_requests', 2);
+            Module = require('../../../lib/router');
+            Module.maxRequests  = 2;
+            Module.requestCount = 5;
+            Module._shouldStopWorker().should.be.true();
+
+            Environment.isWorker.calledOnce.should.be.true();
+        });
+
+        it('should set max requests limit when undefined', function () {
+            var Config  = require('../../../lib/config');
+            Config.set('max_requests', 1000);
 
             Module = require('../../../lib/router');
-            Module.requestCount = 5;
-            Module._shouldStopWorker().should.be.true;
-
-            Environment.isWorker.calledOnce.should.be.true;
+            should.not.exist(Module.maxRequests)
+            Module._shouldStopWorker().should.be.false();
+            Module.maxRequests.should.be.a.Number()
         });
     });
 });

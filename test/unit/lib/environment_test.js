@@ -98,10 +98,10 @@ describe('lib/environment.js', function () {
             Module.loggers.should.eql([ 'some loggers' ]);
             Module.contextName.should.eql('minorjs');
 
-            Module._loadConfigs.calledOnce.should.be.true;
-            Module._initLogger.calledOnce.should.be.true;
+            Module._loadConfigs.calledOnce.should.be.true();
+            Module._initLogger.calledOnce.should.be.true();
 
-            Config.load.calledOnce.should.be.true;
+            Config.load.calledOnce.should.be.true();
             Config.load.calledWith('development', configs);
         });
     });
@@ -110,13 +110,13 @@ describe('lib/environment.js', function () {
         it('returns false', function () {
             Module = require('../../../lib/environment');
             Module.environment = 'production';
-            Module.isDevelopment().should.be.false;
+            Module.isDevelopment().should.be.false();
         });
 
         it('returns true', function () {
             Module = require('../../../lib/environment');
             Module.environment = 'development';
-            Module.isDevelopment().should.be.true;
+            Module.isDevelopment().should.be.true();
         });
     });
 
@@ -124,13 +124,13 @@ describe('lib/environment.js', function () {
         it('returns false', function () {
             Module = require('../../../lib/environment');
             Module.environment = 'development';
-            Module.isProduction().should.be.false;
+            Module.isProduction().should.be.false();
         });
 
         it('returns true', function () {
             Module = require('../../../lib/environment');
             Module.environment = 'production';
-            Module.isProduction().should.be.true;
+            Module.isProduction().should.be.true();
         });
     });
 
@@ -159,7 +159,7 @@ describe('lib/environment.js', function () {
 
             Module._initLogger();
 
-            Logger.initialize.calledOnce.should.be.true;
+            Logger.initialize.calledOnce.should.be.true();
             Logger.initialize.calledWith({
                 isProduction : false,
                 basePath     : 'foo/bar',

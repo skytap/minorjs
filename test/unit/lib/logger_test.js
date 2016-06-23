@@ -71,7 +71,7 @@ describe('lib/logger.js', function () {
             });
             Module.profile(name, start);
 
-            Module._log.calledOnce.should.be.true;
+            Module._log.calledOnce.should.be.true();
         });
     });
 
@@ -92,9 +92,9 @@ describe('lib/logger.js', function () {
             Module.loggers = loggers;
             Module._log(message);
 
-            Module.loggers[0].log.calledOnce.should.be.true;
+            Module.loggers[0].log.calledOnce.should.be.true();
             Module.loggers[0].log.calledWith(level, message);
-            Module.loggers[1].log.calledOnce.should.be.true;
+            Module.loggers[1].log.calledOnce.should.be.true();
             Module.loggers[1].log.calledWith(level, message);
         });
     });
