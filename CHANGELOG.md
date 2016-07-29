@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 3.0.0, July 29th, 2016
+
+* breaking: use IPv4 0.0.0.0 hostname by default
+
 ## Version 2.5.0, June 23rd, 2016
 
 * feature: add jitter to the worker restart interval
