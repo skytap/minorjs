@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 3.0.1, November 19th, 2016
+
+* chore: add node.js v6 to testing matrix
+* chore: upgrade minorjs-test module
+
 ## Version 3.0.0, July 29th, 2016
 
 * breaking: use IPv4 0.0.0.0 hostname by default
