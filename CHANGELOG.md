@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 4.0.2, January 25th, 2018
+
+* fix: compile JS before running tests
+
 ## Version 4.0.1, January 25th, 2018
 
 * fix: corrected comment formatting
