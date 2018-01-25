@@ -12,21 +12,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- **/
+ */
 
-var path       = require('path'),
-    extend     = require('extend'),
-    Server     = require('minorjs-test/lib/server'),
-    HttpServer = require('../../examples/helloworld/lib/http_server');
+import path from 'path'
+import Server from 'minorjs-test/lib/server'
+import HttpServer from '../../examples/helloworld/lib/http_server'
 
-function ExampleServer () {}
+class ExampleServer extends Server {
+  get Server() {
+    return HttpServer
+  }
 
-extend(ExampleServer.prototype, Server.prototype, {
+  get basePath() {
+    return path.resolve(process.cwd(), 'examples/helloworld')
+  }
+}
 
-  Server: HttpServer,
-
-  basePath: path.resolve(process.cwd(), 'examples/helloworld')
-
-});
-
-module.exports = ExampleServer;
+// eslint-disable-next-line import/no-commonjs
+module.exports = ExampleServer

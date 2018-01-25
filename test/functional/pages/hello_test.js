@@ -12,31 +12,24 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- **/
+ */
 
-var should         = require('should'),
-    FunctionalTest = require('../../lib/functional_test');
+import FunctionalTest from '../../lib/functional_test'
 
-describe('/hello', function () {
-  FunctionalTest.setup().run();
+describe('/hello', () => {
+  FunctionalTest.setup().run()
 
-  it('should successfully load the hello page', function (done) {
-    FunctionalTest.browser.visit(FunctionalTest.getUrl('/hello'))
-      .then(function () {
-        FunctionalTest.browser.location.pathname.should.eql('/hello');
-        FunctionalTest.browser.text('h1').should.eql('Welcome to the hello index page!');
-        done();
-      })
-      .done();
-  });
+  it('should successfully load the hello page', () => (
+    FunctionalTest.browser.visit(FunctionalTest.getUrl('/hello')).then(() => {
+      FunctionalTest.browser.location.pathname.should.eql('/hello')
+      FunctionalTest.browser.text('h1').should.eql('Welcome to the hello index page!')
+    })
+  ))
 
-  it('should successfully load the new page which defers rendering to the hello controller', function (done) {
-    FunctionalTest.browser.visit(FunctionalTest.getUrl('/hello/new'))
-      .then(function () {
-        FunctionalTest.browser.location.pathname.should.eql('/hello/new');
-        FunctionalTest.browser.text('h1').should.eql('Welcome to the new hello page!');
-        done();
-      })
-      .done();
-  });
-});
+  it('should successfully load the new page which defers rendering to the hello controller', () => (
+    FunctionalTest.browser.visit(FunctionalTest.getUrl('/hello/new')).then(() => {
+      FunctionalTest.browser.location.pathname.should.eql('/hello/new')
+      FunctionalTest.browser.text('h1').should.eql('Welcome to the new hello page!')
+    })
+  ))
+})

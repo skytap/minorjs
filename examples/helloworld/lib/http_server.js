@@ -14,42 +14,44 @@
  * limitations under the License.
  **/
 
-var Minor = require('minorjs');
+import Minor from 'minorjs'
+import PugTemplatePlugin from './template_plugins/pug_template_plugin'
 
 /**
  * Module to instantiate and start the HTTP server.
  **/
-function HttpServer () {}
+export default class HttpServer {
+  initialize(basePath, port) {
+    this.app = new Minor({
+      basePath: basePath,
+      // you could easily load the port from a config file or from a command line argument
+      port: port || 3042,
+      middleware: {
+        // you can define middleware for different environments. for example,
+        // you could run JS/CSS combination tasks in development but serve
+        // static assets in production.
+        development: [
+          'static',
+        ],
+      },
+      loggers: {
+        // you can define loggers for different environments. for example,
+        // you could log to a file in development and to a central syslog server
+        // in production.
+        development: [
+          'winston',
+        ],
+      },
+      templatePlugins: [
+        PugTemplatePlugin,
+      ],
+    })
 
-HttpServer.prototype.initialize = function (basePath, port) {
-  this.app = new Minor({
-    basePath   : basePath,
-    port       : port || 3042, // you could easily load the port from a config file
-                               // or from a command line argument
-    middleware : {
-      // you can define middleware for different environments. for example,
-      // you could run JS/CSS combination tasks in development but serve
-      // static assets in production.
-      development : [
-        'static'
-      ]
-    },
-    loggers    : {
-      // you can define loggers for different environments. for example,
-      // you could log to a file in development and to a central syslog server
-      // in production.
-      development : [
-        'winston'
-      ]
-    }
-  });
+    return this.app.initialize()
+  }
 
-  return this.app.initialize();
-};
-
-HttpServer.prototype.listen = function () {
-  // tell the server to start listening on the configured port
-  return this.app.listen();
-};
-
-module.exports = HttpServer;
+  listen() {
+    // tell the server to start listening on the configured port
+    return this.app.listen()
+  }
+}

@@ -14,21 +14,18 @@
  * limitations under the License.
  **/
 
-var Controller = require('minorjs').Controller,
-    util       = require('util');
+import Controller from 'minorjs/lib/controller'
 
-function HelloController () {}
+export default class HelloController extends Controller {
 
-util.inherits(HelloController, Controller);
+  index(request, response, next) {
+    this.render(request, response, 'hello/index')
+  }
 
-HelloController.prototype.index = function (request, response, next) {
-  this.render(request, response, 'hello/index');
+  new (request, response, next) {
+    this.render(request, response, 'hello/new', null, false)
+    .then((val) => {
+      response.send(val)
+    })
+  }
 }
-HelloController.prototype.new   = function (request, response, next) {
-  this.render(request, response, 'hello/new', null, false)
-    .then(function(val) {
-      response.send(val);
-    });
-}
-
-module.exports = HelloController;

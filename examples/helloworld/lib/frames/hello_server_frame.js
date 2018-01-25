@@ -14,29 +14,30 @@
  * limitations under the License.
  **/
 
-var util                = require('util'),
-    Frames              = require('minorjs-frames'),
-    HelloView           = require('../views/hello_view'),
-    RenderContextServer = require('./render_context_server');
+import Frame from 'minorjs-frames/lib/frame'
+import HelloView from '../views/hello_view'
+import RenderContextServer from './render_context_server'
 
-function HelloServerFrame () {
-  this.renderContextKlass = RenderContextServer;
+export default class HelloServerFrame extends Frame {
+  get renderContextKlass() {
+    return  RenderContextServer
+  }
 
-  this.domDependencies = {
-    helloView: null
-  };
+  get domDependencies() {
+    return {
+      helloView: null,
+    }
+  }
 
-  this.viewKlasses = [
-    HelloView
-  ];
+  get viewKlasses() {
+    return [
+      HelloView,
+    ]
+  }
 
-  this.frameModel = {
-    userName: 'Jane Smith'
-  };
-
-  return Frames.Frame.prototype.constructor.apply(this, arguments);
+  get frameModel() {
+    return {
+      userName: 'Jane Smith',
+    }
+  }
 }
-
-util.inherits(HelloServerFrame, Frames.Frame);
-
-module.exports = HelloServerFrame;

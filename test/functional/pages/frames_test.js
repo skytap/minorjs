@@ -13,21 +13,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- **/
+ */
 
-var should         = require('should'),
-    FunctionalTest = require('../../lib/functional_test');
+import FunctionalTest from '../../lib/functional_test'
 
-describe('/frames', function () {
-  FunctionalTest.setup().run();
+describe('/frames', () => {
+  FunctionalTest.setup().run()
 
-  it('should successfully load the frames page', function (done) {
-    FunctionalTest.browser.visit(FunctionalTest.getUrl('/frames'))
-      .then(function () {
-        FunctionalTest.browser.location.pathname.should.eql('/frames');
-        FunctionalTest.browser.text('.name').should.eql('Hello: Jane Smith');
-        done();
-      })
-      .done();
-  });
-});
+  it('should successfully load the frames page', () => (
+    FunctionalTest.browser.visit(FunctionalTest.getUrl('/frames')).then(() => {
+      FunctionalTest.browser.location.pathname.should.eql('/frames')
+      FunctionalTest.browser.text('.name').should.eql('Hello: Jane Smith')
+    })
+  ))
+})

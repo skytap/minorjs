@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- **/
+ */
 
-var Backhoe = require('backhoe');
-Backhoe.noCache();
+import Backhoe from 'backhoe'
+
+Backhoe.noCache()

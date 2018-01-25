@@ -14,31 +14,30 @@
  * limitations under the License.
  **/
 
-var Winston     = require('winston'),
-    Minor       = require('minorjs'),
-    Environment = Minor.Environment;
+import Winston from 'winston'
+import Environment from 'minorjs/lib/environment'
 
-function WinstonLogger () {
-  this.winston = new (Winston.Logger)();
+export default class WinstonLogger {
+  constructor() {
+    this.winston = new (Winston.Logger)()
 
-  if (!Environment.isProduction()) {
-    this.winston.add(
-      // configure console logging
-      Winston.transports.Console,
-      {
-        colorize : true,
-        level    : 'silly'
-      }
-    );
+    if (!Environment.isProduction()) {
+      this.winston.add(
+        // configure console logging
+        Winston.transports.Console,
+        {
+          colorize: true,
+          level: 'silly',
+        },
+      )
+    }
+
+    // don't exit on error. MinorJS handles error conditions gracefully.
+    this.winston.exitOnError = false
   }
 
-  // don't exit on error. MinorJS handles error conditions gracefully.
-  this.winston.exitOnError = false;
+  // all loggers must implement a log method
+  log(level, message) {
+    this.winston.log(level, message)
+  }
 }
-
-// all loggers must implement a log method
-WinstonLogger.prototype.log = function (level, message) {
-  this.winston.log(level, message)
-};
-
-module.exports = WinstonLogger;

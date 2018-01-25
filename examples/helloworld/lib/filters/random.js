@@ -14,13 +14,15 @@
  * limitations under the License.
  **/
 
-module.exports = RandomFilter = {
-  process : function (request, response, next) {
+const RandomFilter = {
+  process: function (request, response, next) {
     // this method is run before the request handler.
     // you could use filters to perform tasks like authentication or feature gating.
 
-    var colors = [ 'red', 'green', 'blue' ],
-        index  = Math.round(Math.random() * (3 - 1) + 1);
-    request.color = colors[index - 1];
+    const colors = [ 'red', 'green', 'blue' ]
+    const index  = Math.round(Math.random() * (3 - 1) + 1)
+    request.color = colors[index - 1]
   }
-};
+}
+
+export default RandomFilter

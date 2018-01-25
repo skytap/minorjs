@@ -14,32 +14,25 @@
  * limitations under the License.
  **/
 
-var util             = require('util'),
-    Controller       = require('minorjs').Controller,
-    cheerio          = require('cheerio'),
-    HelloServerFrame = require('../frames/hello_server_frame');
+import cheerio from 'cheerio'
+import Controller from 'minorjs/lib/controller'
+import HelloServerFrame from '../frames/hello_server_frame'
 
-function FramesController () {}
+export default class FramesController extends Controller {
+  index(request, response, next) {
+    const frame = new HelloServerFrame({ request }).initialize()
 
-util.inherits(FramesController, Controller);
-
-FramesController.prototype.index = function (request, response, next) {
-  var frame = new HelloServerFrame({
-    request: request
-  }).initialize();
-
-  return this.render(
+    return this.render(
       request,
       response,
       'frames/index',
       frame.localsForRender(),
-      false
+      false,
     )
-    .then(function (html) {
-      request.$ = cheerio.load(html);
+    .then((html) => {
+      request.$ = cheerio.load(html)
       frame.generateHtml()
-      response.send(request.$.html());
-    });
+      response.send(request.$.html())
+    })
+  }
 }
-
-module.exports = FramesController;

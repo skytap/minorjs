@@ -12,11 +12,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- **/
+ */
 
-var sinon = require('sinon');
-module.exports = function () {
-    this.name       = 'foo_logger';
-    this.initialize = sinon.spy();
-    this.log        = sinon.spy();
-};
+import sinon from 'sinon'
+
+export default function () {
+  this.name = 'foo_logger'
+  this.initialize = sinon.spy()
+  this.log = sinon.spy()
+}

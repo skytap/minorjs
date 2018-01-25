@@ -14,13 +14,14 @@
  * limitations under the License.
  **/
 
-var Minor       = require('minorjs'),
-    Environment = Minor.Environment,
-    Express     = require('express');
+import Environment from 'minorjs/lib/environment'
+import Express from 'express'
 
-module.exports = StaticMiddleware = {
-  process : function (app) {
+const StaticMiddleware = {
+  process: function (app) {
     // tells Express to use the built-in static asset middleware
-    app.use(Express.static(Environment.getBasePath() + '/public'));
+    app.use(Express.static(Environment.getBasePath() + '/public'))
   }
-};
+}
+
+export default StaticMiddleware

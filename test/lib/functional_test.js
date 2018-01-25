@@ -12,14 +12,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- **/
+ */
 
-var extend     = require('extend'),
-    MinorTest  = require('minorjs-test'),
-    FunctionalTest;
+import 'should'
+import extend from 'extend'
+import MinorTest from 'minorjs-test'
 
-FunctionalTest = {
-    PORT: 4002
-};
+const FunctionalTest = {
+  PORT: 4002,
+}
 
-module.exports = extend({}, MinorTest, FunctionalTest);
+export default extend({}, MinorTest, FunctionalTest)
