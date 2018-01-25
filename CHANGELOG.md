@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 4.0.1, January 25th, 2018
+
+* fix: corrected comment formatting
+
 ## Version 4.0.0, January 25th, 2018
 
 * breaking: converted project to ES6+
