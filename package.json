@@ -83,6 +83,6 @@
     "unit:all": "npm run unit -- test/unit/src",
     "functional": "./test/minorjs-test",
     "cuke": "./test/minorjs-cuke-test",
-    "test": "npm run lint && npm run unit:all && npm run functional && npm run cuke"
+    "test": "npm run compile && npm run lint && npm run unit:all && npm run functional && npm run cuke"
   }
 }
