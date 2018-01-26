@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 4.1.0, January 25th, 2018
+
+* feature: added an .npmignore file so npm won't use the .gitignore file
+* fix: simplify publish command
+
 ## Version 4.0.2, January 25th, 2018
 
 * fix: compile JS before running tests
