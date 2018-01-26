@@ -78,7 +78,6 @@
   "scripts": {
     "compile": "babel src --out-dir lib",
     "lint": "eslint src test",
-    "publish": "npm run compile && npm publish",
     "unit": "BABEL_ENV=test mocha --reporter dot --timeout 5000 --require babel-register --require babel-polyfill --require should --recursive",
     "unit:all": "npm run unit -- test/unit/src",
     "functional": "./test/minorjs-test",
