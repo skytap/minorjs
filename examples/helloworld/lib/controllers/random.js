@@ -17,11 +17,9 @@
 import Controller from 'minorjs/lib/controller'
 
 export default class RandomController extends Controller {
-  constructor() {
-    super()
-
-    // run a filter before all requests
-    this.before = {
+  // run a filter before all requests
+  get before() {
+    return {
       random: [ 'all' ],
     }
   }

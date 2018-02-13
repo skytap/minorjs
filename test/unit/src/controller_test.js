@@ -61,11 +61,11 @@ describe('src/controller.js', () => {
     it('no matching before filters', () => {
       const url = 'someurl'
       const handler = 'somehandler'
-
       const module = new Controller()
-      module.before = {
-        index: ['nomatch'],
-      }
+
+      sinon.stub(module, 'before').get(() => (
+        { index: ['nomatch'] }
+      ))
 
       module.addFiltersForHandler(url, handler)
 
@@ -79,11 +79,11 @@ describe('src/controller.js', () => {
     it('adds only matching before filter', () => {
       const url = 'someurl'
       const handler = 'somehandler'
-
       const module = new Controller()
-      module.before = {
-        index: ['somehandler', 'otherfilter'],
-      }
+
+      sinon.stub(module, 'before').get(() => (
+        { index: ['somehandler', 'otherfilter'] }
+      ))
 
       module.addFiltersForHandler(url, handler)
 
@@ -99,11 +99,11 @@ describe('src/controller.js', () => {
     it('adds matching before filter when action is all', () => {
       const url = 'someurl'
       const handler = 'somehandler'
-
       const module = new Controller()
-      module.before = {
-        index: ['all'],
-      }
+
+      sinon.stub(module, 'before').get(() => (
+        { index: ['all'] }
+      ))
 
       module.addFiltersForHandler(url, handler)
 

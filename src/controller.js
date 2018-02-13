@@ -25,16 +25,16 @@ import Environment from './environment'
 import Identifier from './identifier'
 import RenderError from './errors/rendererror'
 
+const DEFAULT_ERROR_MESSAGE = 'An error occurred. Please try again.'
+const ERROR_TEMPLATE = 'error'
+const TEMPLATE_PATH = '/lib/template'
+
 /**
  * Module with common controller functionality.
  */
 export default class Controller extends EventEmitter {
   constructor() {
     super()
-    this.DEFAULT_ERROR_MESSAGE = 'An error occurred. Please try again.'
-    this.ERROR_TEMPLATE = 'error'
-    this.before = {}
-    this.templatePath = '/lib/template'
     this.filtersByRoute = {}
   }
 
@@ -312,5 +312,41 @@ export default class Controller extends EventEmitter {
       request.minorjs,
     )
     this.emit('request-finished', request, results)
+  }
+
+  /**
+   * @return {Object}
+   */
+  get before() {
+    return this._before || {}
+  }
+
+  /**
+   * Controller.before = value
+   * - value (Object): Before filters.
+   */
+  set before(value) {
+    this._before = value
+  }
+
+  /**
+   * @return {String}
+   */
+  get DEFAULT_ERROR_MESSAGE() {
+    return DEFAULT_ERROR_MESSAGE
+  }
+
+  /**
+   * @return {String}
+   */
+  get ERROR_TEMPLATE() {
+    return ERROR_TEMPLATE
+  }
+
+  /**
+   * @return {String}
+   */
+  get templatePath() {
+    return TEMPLATE_PATH
   }
 }
