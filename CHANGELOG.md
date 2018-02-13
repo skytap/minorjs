@@ -1,5 +1,10 @@
 # MinorJS Changelog
 
+## Version 4.2.0, February 13th, 2018
+
+* feature: use getters/setters for controller properties
+* fix: corrected issue with reloading controllers in development mode
+
 ## Version 4.1.0, January 25th, 2018
 
 * feature: added an .npmignore file so npm won't use the .gitignore file
