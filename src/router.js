@@ -432,12 +432,11 @@ const Router = {
   registerRoute(app, controller, url, route) {
     controller.addFiltersForHandler(url, route.handler)
 
-    const requestController = Environment.isDevelopment()
-      ? this.handleDevelopmentRequest(controller, url, route)
-      : controller
-
     app[route.method](route.url, (request, response, next) => {
       const startTime = Date.now()
+      const requestController = Environment.isDevelopment()
+        ? this.handleDevelopmentRequest(controller, url, route)
+        : controller
 
       requestController.emit('request-started', request)
 
