@@ -14,25 +14,28 @@
  * limitations under the License.
  **/
 
-import Controller from 'minorjs/lib/controller'
+var Controller = require('minorjs').Controller,
+    util       = require('util');
 
-export default class RandomController extends Controller {
-  // run a filter before all requests
-  get before() {
-    return {
-      random: [ 'all' ],
+function RandomController () {}
+
+util.inherits(RandomController, Controller);
+
+// run a filter before all requests
+RandomController.prototype.before = {
+  'random' : [ 'all' ]
+};
+
+RandomController.prototype.index = function (request, response, next) {
+  this.render(
+    request,
+    response,
+    'random/index',
+    // pass data to the template
+    {
+      color : request.color
     }
-  }
-
-  index(request, response, next) {
-    this.render(
-      request,
-      response,
-      'random/index',
-      // pass data to the template
-      {
-        color: request.color,
-      },
-    )
-  }
+  );
 }
+
+module.exports = RandomController;

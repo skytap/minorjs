@@ -12,14 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ **/
 
-import sinon from 'sinon'
-
-export default class FooController {
-  get name() {
-    return 'foo_controller'
-  }
-}
-
-FooController.prototype.addFiltersForHandler = sinon.spy()
+var sinon         = require('sinon'),
+    FooController = function () {};
+FooController.prototype.name = 'foo_controller';
+FooController.prototype.addFiltersForHandler = sinon.spy();
+module.exports = FooController;

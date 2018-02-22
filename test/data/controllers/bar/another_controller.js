@@ -12,10 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ **/
 
-export default class AnotherController {
-  get name() {
-    return 'another_controller'
-  }
-}
+var AnotherController = function () {};
+AnotherController.prototype.name = 'another_controller';
+module.exports = AnotherController;

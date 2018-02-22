@@ -14,16 +14,16 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ **/
 
-const path = require('path')
+var path = require('path');
 
 require('minorjs-test/lib/functional').start({
-  server: path.join(__dirname, 'lib/example_server'),
-  type: 'cucumber',
-  testPath: 'test/features/pages/',
-  supportFiles: [
+  server       : path.join(__dirname, 'lib/example_server'),
+  type         : 'cucumber',
+  testPath     : 'test/features/pages/',
+  supportFiles : [
     path.join(__dirname, 'features/support'),
-    path.join(__dirname, 'features/step_definitions'),
-  ],
-})
+    path.join(__dirname, 'features/step_definitions')
+  ]
+});

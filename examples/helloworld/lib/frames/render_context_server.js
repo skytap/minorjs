@@ -14,12 +14,19 @@
  * limitations under the License.
  **/
 
-import RenderContextServer from 'minorjs-frames/lib/render_context_server'
+var util   = require('util'),
+    Frames = require('minorjs-frames');
 
-export default class CustomRenderContextServer extends RenderContextServer {
-  getViewAttributes() {
-    return {
-      request: this.frame.request,
-    }
-  }
+function RenderContextServer () {
+  return Frames.RenderContextServer.prototype.constructor.apply(this, arguments);
 }
+
+util.inherits(RenderContextServer, Frames.RenderContextServer);
+
+RenderContextServer.prototype.getViewAttributes = function () {
+  return {
+    request: this.frame.request
+  };
+}
+
+module.exports = RenderContextServer;

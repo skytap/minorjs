@@ -14,4 +14,4 @@
  * limitations under the License.
  **/
 
-module.exports = require('./lib/minor')
+module.exports = require('./lib/minor');

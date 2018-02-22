@@ -14,33 +14,35 @@
  * limitations under the License.
  **/
 
-import { template } from 'underscore'
+var template = require('underscore').template;
 
-export default class HelloView {
-  constructor(options) {
-    this.model = options.model
-    this.request = options.request
-    this.el = '.name'
-    this.template = template('Hello: <%= model.userName %>')
-  }
-
-  render() {
-    var html = this.template({
-      model: this.model,
-    })
-
-    return this.$el.html(html)
-  }
-
-  setElement(selector) {
-    this.$el = this.request.$(selector)
-    return this
-  }
-
-  refreshEl() {
-    this.setElement(this.el)
-    return this
-  }
+function HelloView (options) {
+  this.model   = options.model;
+  this.request = options.request;
 }
 
-HelloView.prototype.name = 'helloView'
+HelloView.prototype.el = '.name';
+
+HelloView.prototype.name = 'helloView';
+
+HelloView.prototype.template = template('Hello: <%= model.userName %>');
+
+HelloView.prototype.render = function () {
+  var html = this.template({
+    model: this.model
+  });
+
+  return this.$el.html(html);
+}
+
+HelloView.prototype.setElement = function (selector) {
+  this.$el = this.request.$(selector);
+  return this;
+}
+
+HelloView.prototype.refreshEl = function () {
+  this.setElement(this.el);
+  return this;
+}
+
+module.exports = HelloView;

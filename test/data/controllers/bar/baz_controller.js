@@ -12,10 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ **/
 
-export default class BazController {
-  get name() {
-    return 'baz_controller'
-  }
-}
+var BazController = function () {};
+BazController.prototype.name = 'baz_controller';
+module.exports = BazController;
