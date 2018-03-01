@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 5.0.0, March 1st, 2018
+
+* breaking: revert ES6 conversion
+
 ## Version 4.2.0, February 13th, 2018
 
 * feature: use getters/setters for controller properties
