@@ -13,3 +13,4 @@
 # limitations under the License.
 
 /node_modules
+package-lock.json
