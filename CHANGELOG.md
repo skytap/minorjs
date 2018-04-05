@@ -1,5 +1,11 @@
 # MinorJS Changelog
 
+## Version 5.1.0, April 5th, 2018
+
+* feature: upgrade dependencies
+* chore: run tests on node.js version 8
+* chore: ignore the package-lock file
+
 ## Version 5.0.0, March 1st, 2018
 
 * breaking: revert ES6 conversion
