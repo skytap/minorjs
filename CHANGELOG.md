@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 5.1.1, April 5th, 2018
+
+* chore: update minorjs-test version and adding tests for manual and nozombie
+
 ## Version 5.1.0, April 5th, 2018
 
 * feature: upgrade dependencies
@@ -244,3 +248,4 @@
 ## Version 0.0.1, May 1st, 2014
 
 * Initial release.
+
