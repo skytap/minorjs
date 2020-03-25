@@ -43,7 +43,6 @@
   "dependencies": {
     "bluebird": "~3.0.6",
     "express": "~4.16.3",
-    "express-partials": "~0.3.0",
     "extend": "~3.0.0",
     "cookie-parser": "~1.4.0",
     "errorhandler": "~1.4.2",
@@ -52,8 +51,6 @@
     "body-parser": "~1.18.2",
     "underscore": "~1.8.3",
     "wrench": "~1.5.8",
-    "haml-coffee": "~1.14.1",
-    "haml-coffee-loader": "~0.0.5",
     "backhoe": "~0.0.3",
     "humanize-plus": "~1.8.2",
     "inflected": "~1.1.6",
