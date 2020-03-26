@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 5.1.2, March 26th, 2020
+
+* chore: changed template loader from haml to pug
+
 ## Version 5.1.1, April 5th, 2018
 
 * chore: update minorjs-test version and adding tests for manual and nozombie
@@ -248,4 +252,3 @@
 ## Version 0.0.1, May 1st, 2014
 
 * Initial release.
-
