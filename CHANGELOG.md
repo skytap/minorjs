@@ -1,8 +1,8 @@
 # MinorJS Changelog
 
-## Version 5.1.2, March 26th, 2020
+## Version 6.0.0, March 31th, 2020
 
-* chore: changed template loader from haml to pug
+* breaking: changed default template loader from haml to pug
 
 ## Version 5.1.1, April 5th, 2018
 
