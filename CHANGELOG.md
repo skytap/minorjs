@@ -1,4 +1,7 @@
 # MinorJS Changelog
+## Version 6.1.0, March 23rd, 2021
+
+* chore: update pug version for cve
 
 ## Version 6.0.0, March 31th, 2020
 
