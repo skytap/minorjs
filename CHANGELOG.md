@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 7.0.0, March 24, 2021
+
+* breaking: updated pug to 3.0.1, which only supports node.js 10 and up, updated accepted packages of node.
+
 ## Version 6.0.0, March 31th, 2020
 
 * breaking: changed default template loader from haml to pug
