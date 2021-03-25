@@ -43,9 +43,9 @@ tools like Mocha and Should.
 
 While MinorJS is written in Javascript, the framework happily works with CoffeeScript.
 
-## Node.js 0.10
+## Node.js versions
 
-minorjs version 2 and newer works with Node.js 4.  If you need to run minorjs on Node.js 0.10 you can install minorjs version 1.4.0.
+To support updated packages, minorjs version 7 and up works with Node.js 10 and up. Minorjs versions 2-7 works with Node.js 4 and up.  If you need to run minorjs on Node.js 0.10 you can install minorjs version 1.4.0.
 
 ## License
 
