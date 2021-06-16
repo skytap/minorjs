@@ -55,7 +55,7 @@
     "node-uuid": "~1.4.7",
     "pug": "^3.0.1",
     "serve-favicon": "~2.5.0",
-    "underscore": "~1.8.3",
+    "underscore": "~1.12.1",
     "wrench": "~1.5.8"
   },
   "devDependencies": {
