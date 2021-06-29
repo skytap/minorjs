@@ -16,6 +16,8 @@
  * limitations under the License.
  **/
 
+require('coffeescript/register')
+
 var path = require('path');
 
 require('minorjs-test/lib/functional').start({
@@ -25,5 +27,9 @@ require('minorjs-test/lib/functional').start({
   supportFiles : [
     path.join(__dirname, 'features/support'),
     path.join(__dirname, 'features/step_definitions')
+  ],
+  compilerModules: [
+    'coffeescript',
+    'coffeescript/register',
   ]
 });

@@ -1,5 +1,9 @@
 # MinorJS Changelog
 
+## Version 7.0.1, June 24, 2021
+
+* chore: update minorjs-test version and upgrade underscore
+
 ## Version 7.0.0, March 24, 2021
 
 * breaking: updated pug to 3.0.1, which only supports node.js 10 and up, updated accepted packages of node.
