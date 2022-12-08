@@ -1,5 +1,8 @@
 # MinorJS Changelog
 
+## Version 7.0.2 December 7th, 2022
+* chore: update express version to ~4.18.0 to remediate CVE
+
 ## Version 7.0.1, June 24, 2021
 
 * chore: update minorjs-test version and upgrade underscore
