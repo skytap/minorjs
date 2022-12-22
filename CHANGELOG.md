@@ -1,7 +1,8 @@
 # MinorJS Changelog
 
-## Version 7.0.2 December 7th, 2022
+## Version 7.0.2 December 21st, 2022
 * chore: update express version to ~4.18.0 to remediate CVE
+* chore: update body parser version to ~1.19.0 to remediate CVE
 
 ## Version 7.0.1, June 24, 2021
 
