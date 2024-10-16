@@ -46,7 +46,7 @@
     "body-parser": "~1.20.3",
     "compression": "~1.7.2",
     "consolidate": "^0.15.1",
-    "cookie-parser": "~1.4.0",
+    "cookie-parser": "~1.4.7",
     "errorhandler": "~1.4.2",
     "express": "^4.21.0",
     "extend": "~3.0.0",
