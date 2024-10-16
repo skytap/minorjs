@@ -43,7 +43,7 @@
   "dependencies": {
     "backhoe": "~0.0.3",
     "bluebird": "~3.0.6",
-    "body-parser": "~1.19.0",
+    "body-parser": "~1.20.3",
     "compression": "~1.7.2",
     "consolidate": "^0.15.1",
     "cookie-parser": "~1.4.0",
