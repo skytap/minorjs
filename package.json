@@ -44,7 +44,7 @@
     "backhoe": "~0.0.3",
     "bluebird": "~3.0.6",
     "body-parser": "~1.19.0",
-    "compression": "~1.7.2",
+    "compression": "~1.8.1",
     "consolidate": "^0.15.1",
     "cookie-parser": "~1.4.0",
     "errorhandler": "~1.4.2",
@@ -59,8 +59,8 @@
     "wrench": "~1.5.8"
   },
   "devDependencies": {
-    "coffeescript": "~1.10.0",
     "cheerio": "~0.20.0",
+    "coffeescript": "~1.10.0",
     "grunt": "~1.0.1",
     "grunt-cli": "~1.2.0",
     "grunt-mocha-test": "~0.12.7",
