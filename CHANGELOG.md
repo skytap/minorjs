@@ -1,5 +1,8 @@
 # MinorJS Changelog
 
+## Version 7.0.4 Aug 14th, 2025
+* chore: update compression version to ~1.8.1 to remediate CVE
+
 ## Version 7.0.3 April 4th, 2024
 * chore: update express version to ~4.19.2 to remediate CVE
 
