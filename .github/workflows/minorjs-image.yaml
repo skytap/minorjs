@@ -1,5 +1,24 @@
 name: Minorjs Testing
 
+on:
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      ref_type:
+        type: choice
+        description: 'Deploy using a branch or tag?'
+        required: true
+        default: 'branch'
+        options:
+          - branch
+          - tag
+      ref_name:
+        type: string
+        description: 'Name of Branch or tag'
+        required: true
+        default: 'master'
+
 jobs:
   running:
     runs-on: ubuntu-latest
@@ -12,10 +31,9 @@ jobs:
     name: MinorJS ${{ matrix.node }} Build/Test
     steps:
       - uses: actions/checkout@v4
-      - name: Run linting rules and tests
+      - name: Run tests
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: npm install
       - run: npm test
       - run: grunt tests
