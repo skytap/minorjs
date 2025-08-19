@@ -1,0 +1,21 @@
+name: Minorjs Testing
+
+jobs:
+  running:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        node-version: [8, 10]
+
+    name: MinorJS ${{ matrix.node }} Build/Test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run linting rules and tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm test
+      - run: grunt tests
