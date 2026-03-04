@@ -1,5 +1,8 @@
 # MinorJS Changelog
 
+## Version 7.0.6 March 4th, 2026
+* chore: update underscore version to ~1.13.8 to remediate CVE
+
 ## Version 7.0.5 Aug 14th, 2025
 * chore: update compression version to ~1.8.1 to remediate CVE
 
