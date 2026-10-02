@@ -1,5 +1,8 @@
 # MinorJS Changelog
 
+## Version 7.0.8 Sept 21th, 2026
+* fix: normalize controller results to promises to avoid false Bluebird forgotten-return warnings during Express route fall-through
+
 ## Version 7.0.7 Sept 21th, 2026
 * chore: update express version to ^4.22.1 to remediate CVE
 

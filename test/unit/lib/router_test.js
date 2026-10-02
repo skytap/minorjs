@@ -280,6 +280,93 @@ describe('lib/router.js', function () {
     });
 
     describe('_handleRequest', function () {
+        it('should return a promise from the controller callback when falling through', function (done) {
+            var Controller = require('../../../lib/controller'),
+                controller = new Controller(),
+                request = {
+                    url : '/dashboard/1',
+                    route : { path : '/dashboard/:id' },
+                    get : sinon.spy()
+                },
+                response = {},
+                next = sinon.spy(function () {
+                    Promise.resolve();
+                }),
+                controllerResult,
+                Filter = {
+                    run : function () {
+                        var filters = Promise.resolve();
+                        return {
+                            then : function (handler) {
+                                return filters.then(function (success) {
+                                    controllerResult = handler(success);
+                                    return controllerResult;
+                                });
+                            }
+                        };
+                    }
+                };
+
+            Backhoe.mock(require.resolve('../../../lib/filter'), Filter);
+            Backhoe.mock(require.resolve('../../../lib/logger'), { info : sinon.spy() });
+            Module = require('../../../lib/router');
+            Module.options = { controllerTimeout : 1000 };
+            controller.getFilters = function () { return []; };
+            controller._handleError = function (request, response, error) { done(error); };
+
+            Module._handleRequest('/dashboard', { handler : 'show' }, Date.now(),
+                controller, request, response, next);
+
+            Promise.delay(10).then(function () {
+                next.calledOnce.should.be.true();
+                (controllerResult instanceof Promise).should.be.true();
+            }).then(function () {
+                done();
+            }).catch(done);
+        });
+
+        [
+            { name : 'asynchronous controller rejections', asynchronous : true },
+            { name : 'synchronous controller exceptions', asynchronous : false }
+        ].forEach(function (testCase) {
+            it('should handle ' + testCase.name, function (done) {
+                var error = new Error('controller failed'),
+                    controller = {
+                        getFilters : function () { return []; },
+                        show : function () {
+                            if (testCase.asynchronous) {
+                                return Promise.delay(10).then(function () {
+                                    throw error;
+                                });
+                            }
+                            throw error;
+                        },
+                        _handleError : function (request, response, actualError) {
+                            try {
+                                actualError.should.equal(error);
+                                done();
+                            } catch (assertionError) {
+                                done(assertionError);
+                            }
+                        }
+                    },
+                    request = {
+                        url : '/dashboard/1',
+                        route : { path : '/dashboard/:id' },
+                        get : sinon.spy()
+                    };
+
+                Backhoe.mock(require.resolve('../../../lib/filter'), {
+                    run : function () { return Promise.resolve(); }
+                });
+                Backhoe.mock(require.resolve('../../../lib/logger'), { info : sinon.spy() });
+                Module = require('../../../lib/router');
+                Module.options = { controllerTimeout : 1000 };
+                Module._handleRequest('/dashboard', { handler : 'show' }, Date.now(),
+                    controller, request, {}, sinon.spy());
+            });
+        });
+
         it('should run controller', function (done) {
             var url         = 'some/url',
                 filters     = [ 'some filters' ],
